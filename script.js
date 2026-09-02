@@ -1,52 +1,68 @@
 const releaseButton = document.querySelector("#release-download");
-const releaseNote = document.querySelector("#release-note");
-const sourceButton = document.querySelector("#source-download");
 
-function assetPriority(asset) {
-  const name = asset.name.toLowerCase();
-  if (name.endsWith(".dmg")) return 3;
-  if (name.endsWith(".zip") && name.includes("lighttable")) return 2;
-  if (name.endsWith(".zip")) return 1;
-  return 0;
+function detectedPlatform() {
+  const platform = navigator.userAgentData?.platform || navigator.platform || "";
+
+  if (/mac/i.test(platform)) return "macOS";
+  if (/win/i.test(platform)) return "Windows";
+  if (/linux/i.test(platform)) return "Linux";
+  return null;
 }
 
-fetch("https://api.github.com/repos/reville/lighttable/releases/latest", {
-  headers: { Accept: "application/vnd.github+json" },
-})
-  .then((response) => {
-    if (!response.ok) throw new Error("No public release yet");
-    return response.json();
-  })
-  .then((release) => {
-    const downloadable = [...(release.assets || [])]
-      .sort((a, b) => assetPriority(b) - assetPriority(a))
-      .find((asset) => assetPriority(asset) > 0);
+function matchingAsset(assets, platform) {
+  const extensions = {
+    macOS: [".dmg", ".pkg", ".zip"],
+    Windows: [".exe", ".msi"],
+    Linux: [".appimage", ".deb", ".rpm", ".tar.gz"],
+  }[platform] || [];
 
-    releaseButton.href = downloadable?.browser_download_url || release.html_url;
-    releaseButton.classList.remove("is-disabled");
-    releaseButton.removeAttribute("aria-disabled");
-    releaseButton.textContent = "Download for macOS";
-    releaseNote.textContent = release.name
-      ? `Latest release: ${release.name}`
-      : "Latest public release";
-  })
-  .catch(() => {
-    releaseButton.addEventListener("click", (event) => event.preventDefault());
+  return assets.find((asset) => {
+    const name = asset.name.toLowerCase();
+    return extensions.some((extension) => name.endsWith(extension));
   });
+}
 
-fetch("https://api.github.com/repos/reville/lighttable", {
-  headers: { Accept: "application/vnd.github+json" },
-})
-  .then((response) => {
-    if (!response.ok) throw new Error("Repository is not public yet");
-    return response.json();
+if (releaseButton) {
+  const platform = detectedPlatform();
+
+  fetch("https://api.github.com/repos/reville/lighttable-app/releases/latest", {
+    headers: { Accept: "application/vnd.github+json" },
   })
-  .then(() => {
-    sourceButton.href = "https://github.com/reville/lighttable/archive/refs/heads/main.zip";
-    sourceButton.classList.remove("is-disabled");
-    sourceButton.removeAttribute("aria-disabled");
-    sourceButton.textContent = "Download source";
-  })
-  .catch(() => {
-    sourceButton.addEventListener("click", (event) => event.preventDefault());
-  });
+    .then((response) => {
+      if (!response.ok) throw new Error("No published release");
+      return response.json();
+    })
+    .then((release) => {
+      const asset = matchingAsset(release.assets || [], platform);
+
+      if (asset && platform) {
+        releaseButton.href = asset.browser_download_url;
+        releaseButton.textContent = `Download for ${platform}`;
+        return;
+      }
+
+      releaseButton.href = release.html_url;
+    })
+    .catch(() => {
+      // The releases page remains a useful destination before the first build ships.
+    });
+}
+
+const reveals = document.querySelectorAll(".reveal");
+
+if ("IntersectionObserver" in window) {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      });
+    },
+    { threshold: 0.12 },
+  );
+
+  reveals.forEach((element) => observer.observe(element));
+} else {
+  reveals.forEach((element) => element.classList.add("is-visible"));
+}
