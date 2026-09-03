@@ -316,15 +316,7 @@ footer span:first-child {
 
 .gallery-intro h1 {
   margin-top: 30px;
-  font-size: clamp(50px, 8vw, 110px);
-}
-
-.gallery-intro p {
-  max-width: 660px;
-  margin: 28px 0 0;
-  color: var(--muted);
-  font-size: clamp(18px, 2vw, 25px);
-  line-height: 1.42;
+  font-size: clamp(32px, 4.2vw, 58px);
 }
 
 .gallery {
