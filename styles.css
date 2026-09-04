@@ -289,6 +289,177 @@ code {
   box-shadow: 0 34px 90px rgba(0, 0, 0, 0.56), 0 8px 20px rgba(0, 0, 0, 0.34);
 }
 
+.nerdery {
+  padding: clamp(110px, 13vw, 210px) 0 clamp(120px, 15vw, 230px);
+  border-top: 1px solid var(--line);
+}
+
+.nerdery-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
+  column-gap: clamp(48px, 8vw, 130px);
+  align-items: end;
+  padding-bottom: clamp(58px, 7vw, 96px);
+}
+
+.nerdery-intro .eyebrow {
+  grid-column: 1 / -1;
+}
+
+.nerdery-intro h2 {
+  max-width: 850px;
+  margin: 0;
+  font-size: clamp(44px, 5.4vw, 84px);
+  font-weight: 560;
+  letter-spacing: -0.055em;
+  line-height: 0.96;
+}
+
+.nerdery-intro > p:last-child {
+  max-width: 520px;
+  margin: 0 0 5px;
+  color: var(--muted);
+  font-size: clamp(17px, 1.5vw, 21px);
+  line-height: 1.5;
+}
+
+.nerdery-level {
+  border-top: 1px solid var(--line);
+}
+
+.nerdery-level:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+.nerdery-level summary {
+  display: grid;
+  grid-template-columns: clamp(86px, 11vw, 180px) minmax(0, 1fr) 28px;
+  gap: 24px;
+  align-items: center;
+  padding: clamp(25px, 3vw, 40px) 0;
+  cursor: pointer;
+  list-style: none;
+}
+
+.nerdery-level summary::-webkit-details-marker {
+  display: none;
+}
+
+.nerdery-level-number {
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+}
+
+.nerdery-level-title {
+  font-size: clamp(25px, 2.6vw, 40px);
+  font-weight: 540;
+  letter-spacing: -0.038em;
+  line-height: 1;
+  transition: color 160ms ease;
+}
+
+.nerdery-level summary:hover .nerdery-level-title,
+.nerdery-level summary:focus-visible .nerdery-level-title {
+  color: var(--accent);
+}
+
+.nerdery-level summary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 6px;
+}
+
+.nerdery-level-toggle {
+  position: relative;
+  width: 28px;
+  height: 28px;
+}
+
+.nerdery-level-toggle::before,
+.nerdery-level-toggle::after {
+  position: absolute;
+  top: 13px;
+  left: 5px;
+  width: 18px;
+  height: 1px;
+  background: var(--muted);
+  content: "";
+  transition: background 160ms ease, transform 200ms ease;
+}
+
+.nerdery-level-toggle::after {
+  transform: rotate(90deg);
+}
+
+.nerdery-level[open] .nerdery-level-toggle::after {
+  transform: rotate(0deg);
+}
+
+.nerdery-level summary:hover .nerdery-level-toggle::before,
+.nerdery-level summary:hover .nerdery-level-toggle::after,
+.nerdery-level summary:focus-visible .nerdery-level-toggle::before,
+.nerdery-level summary:focus-visible .nerdery-level-toggle::after {
+  background: var(--accent);
+}
+
+.nerdery-copy {
+  padding: 0 52px clamp(40px, 5vw, 72px) clamp(110px, 14vw, 228px);
+}
+
+.nerdery-copy ul {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 clamp(42px, 6vw, 96px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nerdery-copy li {
+  position: relative;
+  padding: 20px 0 20px 18px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.nerdery-copy li::before {
+  position: absolute;
+  top: 29px;
+  left: 0;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+  content: "";
+}
+
+.nerdery-copy strong,
+.nerdery-copy li > span {
+  display: block;
+}
+
+.nerdery-copy strong {
+  margin-bottom: 7px;
+  color: #d9dbd3;
+  font-size: 16px;
+  font-weight: 590;
+  line-height: 1.4;
+}
+
+.nerdery-copy li:only-child strong,
+.nerdery-copy li:only-child span {
+  margin-bottom: 0;
+}
+
+.nerdery-copy a {
+  text-decoration-color: #666b59;
+  text-underline-offset: 3px;
+}
+
 footer {
   min-height: 92px;
   display: flex;
@@ -388,6 +559,19 @@ figcaption strong {
     justify-self: stretch;
     width: 100%;
   }
+
+  .nerdery-intro {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .nerdery-intro > p:last-child {
+    max-width: 680px;
+  }
+
+  .nerdery-copy {
+    padding-left: clamp(110px, 17vw, 190px);
+  }
 }
 
 @media (max-width: 680px) {
@@ -418,6 +602,43 @@ figcaption strong {
     font-size: 14px;
   }
 
+  .nerdery {
+    padding: 88px 0 110px;
+  }
+
+  .nerdery-intro {
+    padding-bottom: 54px;
+  }
+
+  .nerdery-intro h2 {
+    font-size: clamp(42px, 13vw, 62px);
+  }
+
+  .nerdery-level summary {
+    grid-template-columns: 70px minmax(0, 1fr) 24px;
+    gap: 12px;
+  }
+
+  .nerdery-level-title {
+    font-size: 25px;
+  }
+
+  .nerdery-copy {
+    padding: 0 0 42px;
+  }
+
+  .nerdery-copy ul {
+    grid-template-columns: 1fr;
+  }
+
+  .nerdery-copy li {
+    padding: 18px 0 18px 17px;
+  }
+
+  .nerdery-copy li::before {
+    top: 27px;
+  }
+
   .button {
     flex: 1 1 100%;
   }
@@ -442,7 +663,10 @@ figcaption strong {
   .reveal,
   .reveal.is-visible,
   .button,
-  .product-shot {
+  .product-shot,
+  .nerdery-level-title,
+  .nerdery-level-toggle::before,
+  .nerdery-level-toggle::after {
     opacity: 1;
     transform: none;
     transition: none;

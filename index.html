@@ -86,6 +86,128 @@
           />
         </a>
       </section>
+
+      <section class="nerdery" aria-labelledby="nerdery-title">
+        <header class="nerdery-intro reveal">
+          <p class="eyebrow">Choose your depth</p>
+          <h2 id="nerdery-title">What makes LightTable great?</h2>
+          <p>
+            Start with the simple answer. Open each level when you want to see
+            more of what is happening under the surface.
+          </p>
+        </header>
+
+        <div class="nerdery-levels">
+          <details class="nerdery-level reveal" open>
+            <summary>
+              <span class="nerdery-level-number">Level 0</span>
+              <span class="nerdery-level-title">Nerdery</span>
+              <span class="nerdery-level-toggle" aria-hidden="true"></span>
+            </summary>
+            <div class="nerdery-copy">
+              <ul>
+                <li><strong>It’s free.</strong></li>
+                <li>
+                  <strong>It’s well designed.</strong>
+                  <span>The workspace stays quiet, clear, and focused on your photographs.</span>
+                </li>
+                <li>
+                  <strong>It’s easy to try, and easy to switch from Lightroom.</strong>
+                  <span>LightTable keeps originals in place, saves edits non-destructively, and reads a copied, read-only Lightroom Classic catalog. If you decide not to switch, your photos and Lightroom catalog are still exactly where you left them.</span>
+                </li>
+                <li>
+                  <strong>It can make more accurate, beautiful film simulations than Lightroom and other paid apps.</strong>
+                  <span>Instead of adding a preset at the end, LightTable builds the photograph through the actual stages of film, print, and scan.</span>
+                </li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="nerdery-level reveal">
+            <summary>
+              <span class="nerdery-level-number">Level 1</span>
+              <span class="nerdery-level-title">Nerdery</span>
+              <span class="nerdery-level-toggle" aria-hidden="true"></span>
+            </summary>
+            <div class="nerdery-copy">
+              <ul>
+                <li>
+                  <strong>It’s open source.</strong>
+                  <span>You can inspect how it works, report what could be better, and help improve it.</span>
+                </li>
+                <li>
+                  <strong>Film modeling is powered by <a href="https://github.com/andreavolpato/agx-emulsion">spektrafilm <span aria-hidden="true">↗</span></a>.</strong>
+                  <span>Its physically based, spectral model follows published film sensitivity and density data through dye formation, negative development, paper exposure, and the final scan.</span>
+                </li>
+                <li>
+                  <strong>Optional Mac intelligence stays on your Mac.</strong>
+                  <span>Apple Vision can add searchable object and scene tags, visible text, and face counts, as well as power subject-aware masks. It is off by default and never tries to identify a person.</span>
+                </li>
+                <li>
+                  <strong>Moving from Lightroom is practical—and honest about the limits.</strong>
+                  <span>Lightroom Classic users can import a <code>.lrcat</code> copy with ratings, flags, labels, keywords, collections, stacks, virtual copies, metadata, and converted develop settings. Lightroom and Camera Raw XMP presets and sidecars also import. LightTable does not connect directly to the cloud Lightroom library, and cross-engine edits are approximate: every conversion says what mapped and what did not.</span>
+                </li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="nerdery-level reveal">
+            <summary>
+              <span class="nerdery-level-number">Level 2</span>
+              <span class="nerdery-level-title">Nerdery</span>
+              <span class="nerdery-level-toggle" aria-hidden="true"></span>
+            </summary>
+            <div class="nerdery-copy">
+              <ul>
+                <li>
+                  <strong>Rust and the GPU keep it fast.</strong>
+                  <span>The film engine stays warm in a resident Rust/WGPU process, using Metal on macOS and DirectX 12 on Windows. On Mac, the film image flows straight into the native Metal preview while ordinary adjustments remain live.</span>
+                </li>
+                <li>
+                  <strong>The deeper editing tools are already here.</strong>
+                  <span>Point Color, four-way Color Grading, RGB curves, semantic and manual masks, heal and clone tools, HDR, panorama and focus merges, soft proofing, 16-bit ProPhoto TIFF export, versions, virtual copies, and a scriptable command line all work non-destructively.</span>
+                </li>
+                <li>
+                  <strong>Twenty-three film stocks and nine print materials are modeled as materials, not names.</strong>
+                  <span>Stock-specific spectral sensitivity, dye absorption, density curves, masking and inhibitor couplers, halation, development, and grain feed the render. Grain has a physical particle-area baseline, and the selected film format changes its scale in the finished image.</span>
+                </li>
+                <li>
+                  <strong>The darkroom remains part of the image.</strong>
+                  <span>Authentic pairings route a negative to its intended print material; reversal film goes straight to scan. You can tune development time, print exposure, preflash, yellow and magenta filtration, glare, scan softness, and sharpening as separate stages.</span>
+                </li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="nerdery-level reveal">
+            <summary>
+              <span class="nerdery-level-number">Level 3</span>
+              <span class="nerdery-level-title">Photo nerdy</span>
+              <span class="nerdery-level-toggle" aria-hidden="true"></span>
+            </summary>
+            <div class="nerdery-copy">
+              <ul>
+                <li>
+                  <strong>Lens corrections are exact when the data is there.</strong>
+                  <span>LightTable matches camera and lens against its bundled Lensfun database, then applies calibrated distortion, transverse chromatic-aberration, and lens-shading corrections where that profile provides them. It declines uncertain automatic matches; manual distortion, vignette, perspective, rotation, and scale controls are always available.</span>
+                </li>
+                <li>
+                  <strong>More than 1,275 RAW camera models are recognized.</strong>
+                  <span>RAW starts as scene-linear, 16-bit ProPhoto RGB. Capture white balance happens before film, with camera, fine-detail, and smooth-color demosaic choices plus blend or reconstruct highlight recovery.</span>
+                </li>
+                <li>
+                  <strong>Color management runs all the way through export.</strong>
+                  <span>Film and grading stay floating point until the final encoder. Exports embed the matching ICC profile for sRGB, Display P3, or ProPhoto RGB; TIFF output is true RGB16, and soft proofing includes display targets plus matte and gloss print previews.</span>
+                </li>
+                <li>
+                  <strong>Preview and export are designed to agree.</strong>
+                  <span>The native Metal preview, WebGL preview, and full-resolution exporter use the same ordered grading math. Saved edits and export sidecars record their recipe and rendering provenance, so the result is inspectable instead of being a mystery look.</span>
+                </li>
+              </ul>
+            </div>
+          </details>
+        </div>
+      </section>
     </main>
 
     <footer>
