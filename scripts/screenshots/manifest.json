@@ -1,0 +1,208 @@
+{
+  "schema": 1,
+  "capture": {
+    "count": 10,
+    "width": 1800,
+    "viewportWidth": 1500,
+    "viewportHeight": 974,
+    "quality": 84,
+    "settleSeconds": 1.25
+  },
+  "shots": [
+    {
+      "id": "film-controls",
+      "asset": "film-controls.webp",
+      "source": "20-fujifilm-x-t30-iii-desert-rocks.RAF",
+      "subject": "desert rock formations",
+      "title": "Film workspace",
+      "caption": "Stock response, film format, print process, and finishing effects",
+      "alt": "LightTable Film workspace showing a desert landscape with film stock, format, paper, and physical print controls",
+      "pane": "film",
+      "patch": {
+        "params": {
+          "profile_enabled": true,
+          "stock": "kodak_portra_400",
+          "paper": "kodak_portra_endura",
+          "film_format": "35mm",
+          "output_recipe": "neutral_print_scan",
+          "print_exposure": 1.08
+        },
+        "grade": { "exposure": 0.16, "contrast": 0.08 }
+      }
+    },
+    {
+      "id": "editor",
+      "asset": "editor.webp",
+      "source": "03-fujifilm-xq2-harbor-ferry.RAF",
+      "subject": "harbor ferry",
+      "title": "Editing workspace",
+      "caption": "Fast, local, non-destructive light and color controls",
+      "alt": "LightTable Edit workspace showing a harbor ferry with light, curve, and color controls",
+      "pane": "edit",
+      "patch": {
+        "params": { "profile_enabled": false },
+        "grade": {
+          "exposure": 0.24,
+          "contrast": 0.14,
+          "highlights": -0.22,
+          "shadows": 0.18,
+          "temp": 0.05,
+          "vibrance": 0.12
+        }
+      }
+    },
+    {
+      "id": "crop-and-rotate",
+      "asset": "crop-and-rotate.webp",
+      "source": "13-fujifilm-x100vi-stone-church.RAF",
+      "subject": "stone church",
+      "title": "Crop & rotate",
+      "caption": "On-image crop handles, aspect ratios, rotation, and reversible framing",
+      "alt": "LightTable Crop and Rotate workspace showing a stone church with an active crop frame and aspect-ratio controls",
+      "pane": "crop",
+      "patch": {
+        "params": { "profile_enabled": false },
+        "crop": { "x": 0.08, "y": 0.06, "w": 0.78, "h": 0.86 }
+      },
+      "expect": { "activeTool": "crop" }
+    },
+    {
+      "id": "local-masks",
+      "asset": "local-masks.webp",
+      "source": "09-google-pixel-7-pro-succulents.DNG",
+      "subject": "succulent plants",
+      "title": "Local masks",
+      "caption": "Geometric, brush, subject, sky, object, depth, and people-aware selections",
+      "alt": "LightTable Masking workspace showing succulent plants with a radial mask overlay and local adjustment controls",
+      "pane": "mask",
+      "patch": {
+        "params": { "profile_enabled": false },
+        "masks": [
+          {
+            "id": "gallery-radial",
+            "name": "Center plants",
+            "type": "radial",
+            "center": [0.54, 0.52],
+            "radius": 0.31,
+            "feather": 0.62,
+            "grade": { "exposure": 0.35, "texture": 0.2 }
+          }
+        ]
+      }
+    },
+    {
+      "id": "remove",
+      "asset": "remove.webp",
+      "source": "06-nikon-z6-still-life-toys.NEF",
+      "subject": "toy still life",
+      "title": "Remove distractions",
+      "caption": "Remove, heal, and clone corrections stay editable on the photograph",
+      "alt": "LightTable Remove workspace showing a toy still life with editable heal source and target circles",
+      "pane": "heal",
+      "patch": {
+        "params": { "profile_enabled": false },
+        "heals": [
+          {
+            "id": "gallery-heal",
+            "mode": "heal",
+            "target": [0.58, 0.59],
+            "source": [0.69, 0.49],
+            "radius": 0.055,
+            "feather": 0.7,
+            "opacity": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "lens-and-geometry",
+      "asset": "lens-and-geometry.webp",
+      "source": "04-ricoh-gr-iii-coastal-dunes.DNG",
+      "subject": "coastal dunes",
+      "title": "Lens & geometry",
+      "caption": "Profile correction, auto level, perspective, rotation, and scale",
+      "alt": "LightTable Lens workspace showing coastal dunes with profile and geometry correction controls",
+      "pane": "lens",
+      "patch": {
+        "params": { "profile_enabled": false },
+        "optics": {
+          "distortion": 0.08,
+          "vignette": 0.12,
+          "vertical": -0.06,
+          "rotate": 0.35,
+          "scale": 1.04
+        }
+      }
+    },
+    {
+      "id": "before-after",
+      "asset": "before-after.webp",
+      "source": "07-sony-a7c-autumn-leaf.ARW",
+      "subject": "autumn leaf close-up",
+      "title": "Original vs. edited",
+      "caption": "A draggable split compares the source with the complete edit",
+      "alt": "LightTable split comparison showing the original and edited versions of an autumn leaf photograph",
+      "pane": "edit",
+      "commands": ["compare"],
+      "patch": {
+        "params": {
+          "profile_enabled": true,
+          "stock": "kodak_ektar_100",
+          "paper": "kodak_portra_endura"
+        },
+        "grade": { "exposure": 0.2, "contrast": 0.18, "vibrance": 0.16 }
+      },
+      "expect": { "compare": true }
+    },
+    {
+      "id": "photo-info",
+      "asset": "photo-info.webp",
+      "source": "16-dji-mavic-3-pro-aerial-castle.DNG",
+      "subject": "aerial castle",
+      "title": "Photo info & keywords",
+      "caption": "Ratings, flags, keywords, EXIF, and render provenance in one place",
+      "alt": "LightTable Info workspace showing an aerial castle photograph with rating, keyword, EXIF, and render provenance controls",
+      "pane": "metadata",
+      "patch": {
+        "params": { "profile_enabled": false },
+        "status": "approved",
+        "rating": 5,
+        "label": "green",
+        "keywords": ["architecture", "aerial", "landscape"]
+      }
+    },
+    {
+      "id": "history",
+      "asset": "history.webp",
+      "source": "01-canon-eos-80d-city-tree.CR2",
+      "subject": "city street and large tree",
+      "title": "Non-destructive history",
+      "caption": "Every adjustment is recorded with the photograph and remains reversible",
+      "alt": "LightTable History workspace showing a city tree photograph and its recorded non-destructive adjustment steps",
+      "pane": "history",
+      "historySteps": [
+        { "label": "Lift exposure", "patch": { "grade": { "exposure": 0.18 } } },
+        { "label": "Open shadows", "patch": { "grade": { "shadows": 0.24 } } },
+        { "label": "Add clarity", "patch": { "grade": { "clarity": 0.1 } } }
+      ]
+    },
+    {
+      "id": "export-workflow",
+      "asset": "export-workflow.webp",
+      "source": "05-sony-rx100-vii-tropical-homestead.ARW",
+      "subject": "tropical homestead",
+      "title": "Full-resolution export",
+      "caption": "Reusable recipes, color spaces, sizing, file naming, and collision handling",
+      "alt": "LightTable Export workspace showing a tropical homestead with recipe, format, size, color space, and naming controls",
+      "pane": "export",
+      "patch": {
+        "params": {
+          "profile_enabled": true,
+          "stock": "kodak_portra_400",
+          "paper": "kodak_portra_endura"
+        },
+        "grade": { "exposure": 0.55, "shadows": 0.3 }
+      }
+    }
+  ]
+}

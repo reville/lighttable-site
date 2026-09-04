@@ -671,6 +671,14 @@ footer span:first-child {
   font-size: clamp(32px, 4.2vw, 58px);
 }
 
+.gallery-summary {
+  max-width: 680px;
+  margin: 22px 0 0;
+  color: var(--muted);
+  font-size: clamp(15px, 1.6vw, 19px);
+  line-height: 1.55;
+}
+
 .gallery {
   display: grid;
   gap: clamp(76px, 10vw, 150px);
@@ -701,6 +709,11 @@ figcaption {
 figcaption strong {
   color: var(--text);
   font-weight: 580;
+}
+
+figcaption span {
+  max-width: 620px;
+  text-align: right;
 }
 
 [hidden] {
@@ -1288,6 +1301,11 @@ figcaption strong {
   figcaption {
     flex-direction: column;
     gap: 6px;
+  }
+
+  figcaption span {
+    max-width: none;
+    text-align: left;
   }
 
   .feature-overview {
