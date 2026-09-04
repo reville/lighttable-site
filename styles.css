@@ -364,6 +364,10 @@ code {
   list-style: none;
 }
 
+.nerdery-level--single-title summary {
+  grid-template-columns: minmax(0, 1fr) 28px;
+}
+
 .nerdery-level summary::-webkit-details-marker {
   display: none;
 }
@@ -387,6 +391,11 @@ code {
 .nerdery-level summary:hover .nerdery-level-title,
 .nerdery-level summary:focus-visible .nerdery-level-title {
   color: var(--accent);
+}
+
+.nerdery-level--single-title summary:hover .nerdery-level-title,
+.nerdery-level--single-title summary:focus-visible .nerdery-level-title {
+  color: var(--text);
 }
 
 .nerdery-level summary:focus-visible {
@@ -1246,6 +1255,10 @@ figcaption strong {
   .nerdery-level summary {
     grid-template-columns: 70px minmax(0, 1fr) 24px;
     gap: 12px;
+  }
+
+  .nerdery-level--single-title summary {
+    grid-template-columns: minmax(0, 1fr) 24px;
   }
 
   .nerdery-level-title {
