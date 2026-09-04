@@ -108,16 +108,16 @@
               <ul>
                 <li><strong>It’s free.</strong></li>
                 <li>
-                  <strong>It’s well designed.</strong>
-                  <span>The workspace stays quiet, clear, and focused on your photographs.</span>
+                  <strong>The workspace stays quiet.</strong>
+                  <span>The photograph stays large while the library, film controls, and editor share one window.</span>
                 </li>
                 <li>
-                  <strong>It’s easy to try, and easy to switch from Lightroom.</strong>
-                  <span>LightTable keeps originals in place, saves edits non-destructively, and reads a copied, read-only Lightroom Classic catalog. If you decide not to switch, your photos and Lightroom catalog are still exactly where you left them.</span>
+                  <strong>You can try it without moving your photographs.</strong>
+                  <span>LightTable catalogs originals in place and stores its edits separately. It reads a copy of a Lightroom Classic catalog, so the original catalog never changes.</span>
                 </li>
                 <li>
-                  <strong>It can make more accurate, beautiful film simulations than Lightroom and other paid apps.</strong>
-                  <span>Instead of adding a preset at the end, LightTable builds the photograph through the actual stages of film, print, and scan.</span>
+                  <strong>Film is a complete image pipeline.</strong>
+                  <span>Choose a stock and format, then control development, print paper, filtration, preflash, grain, halation, and scan. A preset cannot model those stages.</span>
                 </li>
               </ul>
             </div>
@@ -132,20 +132,24 @@
             <div class="nerdery-copy">
               <ul>
                 <li>
-                  <strong>It’s open source.</strong>
-                  <span>You can inspect how it works, report what could be better, and help improve it.</span>
+                  <strong>LightTable is open source.</strong>
+                  <span>You can inspect how the renderer works and change the app yourself.</span>
                 </li>
                 <li>
-                  <strong>Film modeling is powered by <a href="https://github.com/andreavolpato/agx-emulsion">spektrafilm <span aria-hidden="true">↗</span></a>.</strong>
-                  <span>Its physically based, spectral model follows published film sensitivity and density data through dye formation, negative development, paper exposure, and the final scan.</span>
+                  <strong><a href="https://github.com/andreavolpato/agx-emulsion">Spektrafilm <span aria-hidden="true">↗</span></a> carries the photograph from exposure through scan.</strong>
+                  <span>It uses published sensitivity and density data to track dye formation, negative development, paper exposure, and the final scan.</span>
                 </li>
                 <li>
-                  <strong>Optional Mac intelligence stays on your Mac.</strong>
-                  <span>Apple Vision can add searchable object and scene tags, visible text, and face counts, as well as power subject-aware masks. It is off by default and never tries to identify a person.</span>
+                  <strong>Apple Vision stays on your Mac.</strong>
+                  <span>If you turn it on, it adds searchable scene and object tags, visible text, face counts, and subject masks. It does not identify people or upload the analysis.</span>
                 </li>
                 <li>
-                  <strong>Moving from Lightroom is practical—and honest about the limits.</strong>
-                  <span>Lightroom Classic users can import a <code>.lrcat</code> copy with ratings, flags, labels, keywords, collections, stacks, virtual copies, metadata, and converted develop settings. Lightroom and Camera Raw XMP presets and sidecars also import. LightTable does not connect directly to the cloud Lightroom library, and cross-engine edits are approximate: every conversion says what mapped and what did not.</span>
+                  <strong>A Lightroom catalog import leaves Lightroom alone.</strong>
+                  <span>LightTable copies the catalog and reads the copy. Ratings, flags, labels, keywords, collections, stacks, virtual copies, metadata, and supported develop settings come across.</span>
+                </li>
+                <li>
+                  <strong>No silent approximation.</strong>
+                  <span>LightTable lists the controls it mapped and the controls it skipped when it imports Lightroom, Camera Raw, or Capture One settings. Different render engines produce different results, so the report labels converted settings approximate.</span>
                 </li>
               </ul>
             </div>
@@ -160,20 +164,20 @@
             <div class="nerdery-copy">
               <ul>
                 <li>
-                  <strong>Rust and the GPU keep it fast.</strong>
-                  <span>The film engine stays warm in a resident Rust/WGPU process, using Metal on macOS and DirectX 12 on Windows. On Mac, the film image flows straight into the native Metal preview while ordinary adjustments remain live.</span>
+                  <strong>A warmed 1100 px film render takes about 50 ms on the benchmark Mac.</strong>
+                  <span>The measured median was 50.5 ms across 30 runs, using the resident Rust/WGPU renderer on an Apple silicon Mac running macOS 26.6.2.</span>
                 </li>
                 <li>
-                  <strong>The deeper editing tools are already here.</strong>
-                  <span>Point Color, four-way Color Grading, RGB curves, semantic and manual masks, heal and clone tools, HDR, panorama and focus merges, soft proofing, 16-bit ProPhoto TIFF export, versions, virtual copies, and a scriptable command line all work non-destructively.</span>
+                  <strong>Point Color, RGB curves, masks, and merge tools are built in.</strong>
+                  <span>The same non-destructive edit can include four-way Color Grading, heal and clone, HDR, panorama or focus merge, soft proofing, versions, virtual copies, and command-line control.</span>
                 </li>
                 <li>
-                  <strong>Twenty-three film stocks and nine print materials are modeled as materials, not names.</strong>
-                  <span>Stock-specific spectral sensitivity, dye absorption, density curves, masking and inhibitor couplers, halation, development, and grain feed the render. Grain has a physical particle-area baseline, and the selected film format changes its scale in the finished image.</span>
+                  <strong>Each film stock has its own model.</strong>
+                  <span>Twenty-three stocks carry their own spectral sensitivity, dye absorption, density curves, masking, inhibitor behavior, halation, development, and grain. Film format changes the grain scale in the finished image.</span>
                 </li>
                 <li>
-                  <strong>The darkroom remains part of the image.</strong>
-                  <span>Authentic pairings route a negative to its intended print material; reversal film goes straight to scan. You can tune development time, print exposure, preflash, yellow and magenta filtration, glare, scan softness, and sharpening as separate stages.</span>
+                  <strong>The print and scan stages remain editable.</strong>
+                  <span>Choose the print material, then adjust print exposure, preflash, yellow and magenta filtration, glare, scan softness, and sharpening. Reversal film goes straight to scan.</span>
                 </li>
               </ul>
             </div>
@@ -188,20 +192,20 @@
             <div class="nerdery-copy">
               <ul>
                 <li>
-                  <strong>Lens corrections are exact when the data is there.</strong>
-                  <span>LightTable matches camera and lens against its bundled Lensfun database, then applies calibrated distortion, transverse chromatic-aberration, and lens-shading corrections where that profile provides them. It declines uncertain automatic matches; manual distortion, vignette, perspective, rotation, and scale controls are always available.</span>
+                  <strong>Automatic lens correction requires a confident profile match.</strong>
+                  <span>When Lensfun has the data, LightTable corrects calibrated distortion, transverse chromatic aberration, and lens shading. Otherwise it leaves automatic correction off and keeps manual controls available.</span>
                 </li>
                 <li>
-                  <strong>More than 1,275 RAW camera models are recognized.</strong>
-                  <span>RAW starts as scene-linear, 16-bit ProPhoto RGB. Capture white balance happens before film, with camera, fine-detail, and smooth-color demosaic choices plus blend or reconstruct highlight recovery.</span>
+                  <strong>LibRaw 0.22 recognizes 1,275 cameras from 83 manufacturers.</strong>
+                  <span>RAW enters the pipeline as scene-linear, 16-bit ProPhoto RGB. Capture white balance runs before film, with camera-native, fine-detail, and smooth-color demosaicing plus blend and reconstruct highlight recovery.</span>
                 </li>
                 <li>
-                  <strong>Color management runs all the way through export.</strong>
-                  <span>Film and grading stay floating point until the final encoder. Exports embed the matching ICC profile for sRGB, Display P3, or ProPhoto RGB; TIFF output is true RGB16, and soft proofing includes display targets plus matte and gloss print previews.</span>
+                  <strong>The pipeline stays floating point until export.</strong>
+                  <span>JPEG, HEIF, and PNG are 8-bit; TIFF is true RGB16. Every export embeds the matching ICC profile for sRGB, Display P3, or ProPhoto RGB. Soft proofing covers sRGB, Display P3, matte paper, and gloss paper.</span>
                 </li>
                 <li>
-                  <strong>Preview and export are designed to agree.</strong>
-                  <span>The native Metal preview, WebGL preview, and full-resolution exporter use the same ordered grading math. Saved edits and export sidecars record their recipe and rendering provenance, so the result is inspectable instead of being a mystery look.</span>
+                  <strong>Preview and export use the same ordered grading math.</strong>
+                  <span>The native Metal preview, WebGL fallback, and full-resolution exporter share the same curves and grading order. Saved edits and export sidecars record the recipe and renderer revision.</span>
                 </li>
               </ul>
             </div>

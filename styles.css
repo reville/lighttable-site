@@ -426,6 +426,14 @@ code {
   line-height: 1.55;
 }
 
+.nerdery-copy li:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}
+
+.nerdery-copy li:last-child:nth-child(odd) > span {
+  max-width: 72ch;
+}
+
 .nerdery-copy li::before {
   position: absolute;
   top: 29px;
