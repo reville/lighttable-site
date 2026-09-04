@@ -790,15 +790,50 @@ figcaption strong {
 }
 
 .feature-facts {
-  padding: clamp(88px, 10vw, 148px) 0 clamp(118px, 14vw, 210px);
+  padding: 0;
 }
 
-.feature-facts-intro > p:last-child {
-  max-width: 430px;
-  margin: 0 0 5px;
-  color: var(--muted);
-  font-size: clamp(16px, 1.4vw, 20px);
-  line-height: 1.55;
+.feature-facts-disclosure[open] {
+  padding-bottom: clamp(78px, 10vw, 148px);
+}
+
+.feature-facts-disclosure summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  padding: clamp(58px, 7vw, 96px) 0;
+  cursor: pointer;
+  list-style: none;
+}
+
+.feature-facts-disclosure summary::-webkit-details-marker {
+  display: none;
+}
+
+.feature-facts-toggle {
+  color: var(--accent);
+  font-size: clamp(30px, 3vw, 44px);
+  font-weight: 400;
+  line-height: 1;
+  transition: transform 180ms ease;
+}
+
+.feature-facts-disclosure[open] .feature-facts-toggle {
+  transform: rotate(45deg);
+}
+
+.feature-facts-disclosure summary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 8px;
+}
+
+.feature-facts-disclosure h2 {
+  margin: 0;
+  font-size: clamp(36px, 4.4vw, 66px);
+  font-weight: 560;
+  letter-spacing: -0.05em;
+  line-height: 0.98;
 }
 
 .feature-facts-list {
@@ -1268,10 +1303,6 @@ figcaption strong {
   }
 
   .feature-overview {
-    padding: 78px 0 112px;
-  }
-
-  .feature-facts {
     padding: 78px 0 112px;
   }
 

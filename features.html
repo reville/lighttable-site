@@ -61,13 +61,13 @@
       </section>
 
       <section class="feature-facts" aria-labelledby="install-title">
-        <header class="feature-section-intro feature-facts-intro reveal">
-          <p class="eyebrow">Compatibility and storage</p>
-          <h2 id="install-title">Before you install.</h2>
-          <p>The current Mac build, its import limits, and what it leaves on your computer.</p>
-        </header>
+        <details class="feature-facts-disclosure">
+          <summary class="reveal">
+            <h2 id="install-title">Install Questions</h2>
+            <span class="feature-facts-toggle" aria-hidden="true">+</span>
+          </summary>
 
-        <dl class="feature-facts-list">
+          <dl class="feature-facts-list">
           <div class="reveal">
             <dt>Intel or Apple silicon?</dt>
             <dd>The current Mac release is Apple silicon only. The app and its helper programs are built for <code>arm64</code>, so they do not launch on an Intel Mac.</dd>
@@ -96,7 +96,8 @@
             <dt>What remains after uninstalling?</dt>
             <dd>Dragging <code>LightTable.app</code> to the Trash removes the app, not its data. Originals, ingested copies, Apple Photos imports, exports, Application Support data, caches, <code>.lighttable-state.json</code> files, and any XMP sidecars remain. For a complete removal, quit LightTable and delete <code>~/Library/Application Support/LightTable</code> and <code>~/Library/Caches/LightTable</code>. Remove imported or exported photographs and sidecars separately only if you no longer want them.</dd>
           </div>
-        </dl>
+          </dl>
+        </details>
       </section>
 
       <section class="feature-directory" aria-labelledby="directory-title">
