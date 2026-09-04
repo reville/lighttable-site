@@ -95,8 +95,8 @@
           <p class="eyebrow">Choose your depth</p>
           <h2 id="nerdery-title">What makes LightTable great?</h2>
           <p>
-            Start with the simple answer. Open each level when you want to see
-            more of what is happening under the surface.
+            Start with the simple answer. Each level goes deeper into what is
+            happening under the surface.
           </p>
         </header>
 
@@ -126,7 +126,7 @@
             </div>
           </details>
 
-          <details class="nerdery-level reveal">
+          <details class="nerdery-level reveal" open>
             <summary>
               <span class="nerdery-level-number">Level 1</span>
               <span class="nerdery-level-title">Nerdery</span>
@@ -158,7 +158,7 @@
             </div>
           </details>
 
-          <details class="nerdery-level reveal">
+          <details class="nerdery-level reveal" open>
             <summary>
               <span class="nerdery-level-number">Level 2</span>
               <span class="nerdery-level-title">Nerdery</span>
@@ -186,7 +186,7 @@
             </div>
           </details>
 
-          <details class="nerdery-level reveal">
+          <details class="nerdery-level reveal" open>
             <summary>
               <span class="nerdery-level-number">Level 3</span>
               <span class="nerdery-level-title">Photo nerdy</span>
@@ -215,6 +215,77 @@
           </details>
         </div>
       </section>
+
+      <figure class="film-proof reveal" aria-labelledby="film-proof-title">
+        <figcaption class="film-proof-intro">
+          <p class="eyebrow">One RAW, three paths</p>
+          <h3 id="film-proof-title">A preset changes controls. Film changes the image chain.</h3>
+          <p>
+            The same Nikon Z6 RAW feeds every version, with no hand-matching
+            after the render. The middle version uses a Lightroom-compatible
+            XMP imported and rendered by LightTable with Film off. It is not an
+            Adobe Lightroom render. The film version runs through Kodak Gold
+            200, Portra Endura paper, and a modeled neutral scan.
+          </p>
+        </figcaption>
+
+        <div class="proof-grid proof-grid-three" aria-label="Full image comparison">
+          <a class="proof-item" href="assets/film-comparison/neutral-frame.jpg">
+            <span class="proof-image"><img src="assets/film-comparison/neutral-frame.jpg" alt="Neutral conversion of the Nikon Z6 still-life RAW" width="1800" height="1199" loading="lazy" /></span>
+            <span class="proof-meta"><span class="proof-index">01 / RAW</span><strong>Neutral conversion</strong><small>Film off · standard base curve</small></span>
+          </a>
+          <a class="proof-item" href="assets/film-comparison/imported-xmp-frame.jpg">
+            <span class="proof-image"><img src="assets/film-comparison/imported-xmp-frame.jpg" alt="The same RAW with a Lightroom-compatible XMP converted and rendered by LightTable" width="1800" height="1199" loading="lazy" /></span>
+            <span class="proof-meta"><span class="proof-index">02 / XMP</span><strong>Imported preset</strong><small>16 controls mapped · Film off</small></span>
+          </a>
+          <a class="proof-item" href="assets/film-comparison/lighttable-film-frame.jpg">
+            <span class="proof-image"><img src="assets/film-comparison/lighttable-film-frame.jpg" alt="The same RAW modeled as Kodak Gold 200, printed to Portra Endura paper, and scanned" width="1800" height="1199" loading="lazy" /></span>
+            <span class="proof-meta"><span class="proof-index">03 / FILM</span><strong>LightTable film process</strong><small>Gold 200 → paper → scan</small></span>
+          </a>
+        </div>
+
+        <div class="proof-subhead">
+          <span class="proof-index">100% crops</span>
+          <h4>Same 900 × 900 source pixels. Open any crop to inspect it pixel for pixel.</h4>
+        </div>
+        <div class="proof-grid proof-grid-three proof-crops" aria-label="Matched one hundred percent crops">
+          <a class="proof-item" href="assets/film-comparison/neutral-crop.jpg">
+            <span class="proof-image"><img src="assets/film-comparison/neutral-crop.jpg" alt="One hundred percent crop of the neutral RAW conversion" width="900" height="900" loading="lazy" /></span>
+            <span class="proof-meta"><strong>Neutral detail</strong><small>Decoded RAW pixels</small></span>
+          </a>
+          <a class="proof-item" href="assets/film-comparison/imported-xmp-crop.jpg">
+            <span class="proof-image"><img src="assets/film-comparison/imported-xmp-crop.jpg" alt="The identical one hundred percent crop after the imported XMP conversion" width="900" height="900" loading="lazy" /></span>
+            <span class="proof-meta"><strong>Preset detail</strong><small>Tone and detail controls</small></span>
+          </a>
+          <a class="proof-item" href="assets/film-comparison/lighttable-film-crop.jpg">
+            <span class="proof-image"><img src="assets/film-comparison/lighttable-film-crop.jpg" alt="The identical one hundred percent crop showing LightTable's physical grain simulation" width="900" height="900" loading="lazy" /></span>
+            <span class="proof-meta"><strong>Physical grain</strong><small>Gold 200 baseline · 35mm</small></span>
+          </a>
+        </div>
+
+        <div class="proof-subhead proof-print-head">
+          <span class="proof-index">Print / scan</span>
+          <h4>The output stage remains editable.</h4>
+          <p>Same simulated negative and paper. Only the modeled output recipe changes.</p>
+        </div>
+        <div class="proof-grid proof-grid-two" aria-label="Print and scan recipe comparison">
+          <a class="proof-item" href="assets/film-comparison/clean-scan-frame.jpg">
+            <span class="proof-image"><img src="assets/film-comparison/clean-scan-frame.jpg" alt="Kodak Gold 200 simulation with LightTable's modeled clean scan recipe" width="1800" height="1199" loading="lazy" /></span>
+            <span class="proof-meta"><strong>Clean scan</strong><small>Low flare · crisp neutral scan</small></span>
+          </a>
+          <a class="proof-item" href="assets/film-comparison/soft-optical-print-frame.jpg">
+            <span class="proof-image"><img src="assets/film-comparison/soft-optical-print-frame.jpg" alt="Kodak Gold 200 simulation with a softer optical print and visible print flare" width="1800" height="1199" loading="lazy" /></span>
+            <span class="proof-meta"><strong>Soft optical print</strong><small>Gentler scan MTF · visible print flare</small></span>
+          </a>
+        </div>
+
+        <p class="proof-method">
+          Built from a <a href="https://raw.pixls.us/getfile.php/3587/nice/Nikon%20-%20Z%206%20-%2012bit%2012bit%20compressed%20%283%3A2%29.NEF">CC0 Nikon Z6 RAW <span aria-hidden="true">↗</span></a>.
+          The <a href="assets/film-comparison/manifest.json">build manifest</a>
+          records every image, parameter, crop coordinate, source hash, and
+          renderer revision.
+        </p>
+      </figure>
     </main>
 
     <footer>
