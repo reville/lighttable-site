@@ -66,3 +66,60 @@ if ("IntersectionObserver" in window) {
 } else {
   reveals.forEach((element) => element.classList.add("is-visible"));
 }
+
+const featureSearch = document.querySelector("#feature-search");
+
+if (featureSearch) {
+  const searchForm = featureSearch.closest("form");
+  const clearButton = document.querySelector("#feature-search-clear");
+  const emptyClearButton = document.querySelector("#feature-empty-clear");
+  const resultText = document.querySelector("#feature-results");
+  const emptyState = document.querySelector("#feature-empty");
+  const featureGroups = [...document.querySelectorAll("[data-feature-group]")];
+  const featureItems = [...document.querySelectorAll("[data-feature]")];
+  const total = featureItems.length;
+  const normalize = (value) => value.toLocaleLowerCase().normalize("NFKD");
+
+  featureItems.forEach((item) => {
+    const group = item.closest("[data-feature-group]");
+    const groupHeader = group?.querySelector(".feature-group-header");
+    item.searchText = normalize(`${groupHeader?.textContent || ""} ${item.textContent || ""}`);
+  });
+
+  function updateFeatureResults() {
+    const rawQuery = featureSearch.value.trim();
+    const query = normalize(rawQuery);
+    let visibleCount = 0;
+
+    featureItems.forEach((item) => {
+      const matches = !query || item.searchText.includes(query);
+      item.hidden = !matches;
+      if (matches) visibleCount += 1;
+    });
+
+    featureGroups.forEach((group) => {
+      group.hidden = !group.querySelector("[data-feature]:not([hidden])");
+    });
+
+    clearButton.hidden = !rawQuery;
+    emptyState.hidden = visibleCount !== 0;
+    resultText.textContent = rawQuery
+      ? `${visibleCount} ${visibleCount === 1 ? "match" : "matches"} for “${rawQuery}”`
+      : `${total} features, organized by workflow`;
+  }
+
+  function clearFeatureSearch() {
+    featureSearch.value = "";
+    updateFeatureResults();
+    featureSearch.focus();
+  }
+
+  searchForm.addEventListener("submit", (event) => event.preventDefault());
+  featureSearch.addEventListener("input", updateFeatureResults);
+  featureSearch.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && featureSearch.value) clearFeatureSearch();
+  });
+  clearButton.addEventListener("click", clearFeatureSearch);
+  emptyClearButton.addEventListener("click", clearFeatureSearch);
+  updateFeatureResults();
+}

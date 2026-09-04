@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="A complete, searchable guide to LightTable's library, RAW editing, film, masking, migration, and export features."
+    />
+    <meta property="og:title" content="LightTable features" />
+    <meta
+      property="og:description"
+      content="A complete, searchable guide to LightTable's photographic workflow."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://lighttable.app/features.html" />
+    <meta property="og:image" content="https://lighttable.app/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0b0c0b" />
+    <link rel="icon" href="icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <title>LightTable features</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <a class="wordmark" href="./" aria-label="LightTable home">
+        <img src="icon.png" alt="" width="30" height="30" />
+        <span>LightTable</span>
+      </a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="screenshots.html">Screenshots</a>
+        <a href="features.html" aria-current="page">Features</a>
+        <a href="https://github.com/reville/lighttable-app">GitHub <span aria-hidden="true">↗</span></a>
+      </nav>
+    </header>
+
+    <main class="features-main" id="main">
+      <header class="features-hero">
+        <p class="eyebrow reveal">Feature guide</p>
+        <h1 class="reveal">What LightTable does.</h1>
+        <p class="features-lede reveal">
+          Bring a library across, work through a shoot, build the image, and
+          deliver it. Originals stay untouched. The work stays on your Mac.
+        </p>
+      </header>
+
+      <section class="feature-overview" aria-labelledby="overview-title">
+        <header class="feature-section-intro reveal">
+          <p class="eyebrow">The short version</p>
+          <h2 id="overview-title">Ten things to know.</h2>
+        </header>
+        <ol class="big-picture-list reveal">
+          <li>A local, non-destructive RAW editor built as a native Mac app.</li>
+          <li>A physical film workflow with 23 stocks and 9 print profiles.</li>
+          <li>One searchable catalog for photographs kept across many folders.</li>
+          <li>Verified card ingest, watched folders, and Apple Photos import.</li>
+          <li>Fast culling with ratings, Survey, A/B comparison, and assisted selects.</li>
+          <li>Full tonal, color, detail, lens, geometry, mask, heal, and clone tools.</li>
+          <li>Lightroom catalog and preset migration with a report of every skip.</li>
+          <li>HDR, panorama, focus merge, reference matching, and soft proofing.</li>
+          <li>Color-managed JPEG, HEIF, PNG, and true 16-bit TIFF export.</li>
+          <li>Optional local AI, plus command-line and agent control you can undo.</li>
+        </ol>
+      </section>
+
+      <section class="feature-directory" aria-labelledby="directory-title">
+        <header class="feature-section-intro feature-directory-intro reveal">
+          <p class="eyebrow">The complete list</p>
+          <h2 id="directory-title">Find a feature.</h2>
+          <p>
+            Search by task, tool, file format, or the name you know from another editor.
+          </p>
+        </header>
+
+        <div class="feature-search-bar">
+          <form class="feature-search" role="search" novalidate>
+            <label for="feature-search">Search features</label>
+            <div class="feature-search-control">
+              <input
+                id="feature-search"
+                name="q"
+                type="search"
+                placeholder="Try ‘Lightroom’, ‘grain’, or ‘mask’"
+                autocomplete="off"
+                aria-describedby="feature-results"
+              />
+              <button id="feature-search-clear" type="button" hidden>Clear</button>
+            </div>
+            <p id="feature-results" aria-live="polite" aria-atomic="true">
+              Browse every feature by workflow.
+            </p>
+          </form>
+        </div>
+
+        <div class="feature-groups">
+          <section class="feature-group reveal" data-feature-group>
+            <header class="feature-group-header">
+              <p class="feature-group-number">01</p>
+              <h3>Bring photographs in</h3>
+              <p>Cards, folders, Apple Photos, and live capture folders.</p>
+            </header>
+            <ul class="feature-items">
+              <li data-feature><strong>One catalog, many folders</strong><span>A single SQLite catalog spans every source folder, so the whole library remains available at once.</span></li>
+              <li data-feature><strong>Catalog in place</strong><span>Add Photos and Add Folder use native pickers and leave originals where they already live.</span></li>
+              <li data-feature><strong>Content-based relinking</strong><span>A file moved or renamed in Finder reconnects to its edits by content rather than path.</span></li>
+              <li data-feature><strong>Apple Photos import</strong><span>Copy the current or compatible representation into a durable folder under Pictures before cataloging it.</span></li>
+              <li data-feature><strong>Broad RAW support</strong><span>Open the formats recognized by LibRaw 0.22, covering 1,275 cameras from 83 manufacturers.</span></li>
+              <li data-feature><strong>Processed-image input</strong><span>Use HIF, JPEG, and HEIC photographs; ColorSync converts them to ProPhoto RGB before the film model.</span></li>
+              <li data-feature><strong>Verified card ingest</strong><span>Copy into dated folders, apply a rename template, and verify the full content hash before success.</span></li>
+              <li data-feature><strong>Second ingest copy</strong><span>Write an optional backup copy during the same card ingest job.</span></li>
+              <li data-feature><strong>Duplicate-safe resume</strong><span>Existing content is skipped by default, and a restarted ingest resumes without making another set.</span></li>
+              <li data-feature><strong>Watched folders</strong><span>Check a capture or hot folder every two seconds, then catalog arrivals in place or copy them through verified ingest.</span></li>
+              <li data-feature><strong>Arrival presets and follow mode</strong><span>Apply a preset to new watched-folder frames and select the latest capture only while the user is idle.</span></li>
+              <li data-feature><strong>Catalog backup</strong><span>Create dated ZIP backups through SQLite's own backup system.</span></li>
+            </ul>
+          </section>
+
+          <section class="feature-group reveal" data-feature-group>
+            <header class="feature-group-header">
+              <p class="feature-group-number">02</p>
+              <h3>Browse and organize</h3>
+              <p>Views and catalog tools for a small folder or a long-running library.</p>
+            </header>
+            <ul class="feature-items">
+              <li data-feature><strong>Four library views</strong><span>Use the aspect-ratio Photo Grid, metadata-rich Square Grid, single-photo Detail view, or horizontal filmstrip.</span></li>
+              <li data-feature><strong>Adjustable, lazy-loaded thumbnails</strong><span>Change thumbnail size without loading the whole library into the browser.</span></li>
+              <li data-feature><strong>Catalog search</strong><span>Search filenames, keywords, loaded metadata, local AI tags, and visible text through SQL.</span></li>
+              <li data-feature><strong>Filters and sorting</strong><span>Filter by flag, rating, file kind, or virtual-copy status and sort by name, rating, flag, or date.</span></li>
+              <li data-feature><strong>Collections</strong><span>Build regular collections without moving the underlying files.</span></li>
+              <li data-feature><strong>Smart collections</strong><span>Save rule-based views that update as ratings, flags, labels, or text change.</span></li>
+              <li data-feature><strong>Stacks</strong><span>Collapse related originals, derivatives, or burst frames into one library position.</span></li>
+              <li data-feature><strong>Virtual copies</strong><span>Create independent edits and names while sharing one source decode and one original file.</span></li>
+              <li data-feature><strong>Ratings, flags, and labels</strong><span>Apply 0 to 5 stars, pick, reject, unflag, and five color labels, then filter or sort on them.</span></li>
+              <li data-feature><strong>Hierarchical keywords</strong><span>Store Parent &gt; Child keyword paths and find every descendant by searching the parent.</span></li>
+              <li data-feature><strong>IPTC and GPS metadata</strong><span>Edit title, caption, headline, creator, copyright, credit, location, and coordinates across one photo or a selection.</span></li>
+              <li data-feature><strong>Folder tools</strong><span>Create, rename, favorite, synchronize, reveal, or remove a source bookmark without deleting its photographs.</span></li>
+              <li data-feature><strong>Sidecar-aware moves</strong><span>Drag a photograph between catalog folders and move its adjacent XMP sidecar with it.</span></li>
+              <li data-feature><strong>Camera metadata readout</strong><span>See camera, lens, focal length, aperture, shutter, ISO, dimensions, and capture date.</span></li>
+              <li data-feature><strong>Cataloged video</strong><span>Search, filter, and play clips with a poster frame and seeking; still-image controls remain off because they do not apply.</span></li>
+            </ul>
+          </section>
+
+          <section class="feature-group reveal" data-feature-group>
+            <header class="feature-group-header">
+              <p class="feature-group-number">03</p>
+              <h3>Cull and review</h3>
+              <p>Move from a full shoot to the frames worth editing.</p>
+            </header>
+            <ul class="feature-items">
+              <li data-feature><strong>Range and command selection</strong><span>Use Shift or Command to build a selection directly in the library.</span></li>
+              <li data-feature><strong>Survey view</strong><span>Lay a selection or burst out together and rate whichever cell is active.</span></li>
+              <li data-feature><strong>A/B view</strong><span>Narrow Survey to two frames, swap their positions, and make one the select while rejecting the rest.</span></li>
+              <li data-feature><strong>Rate and advance</strong><span>Hold Shift with a digit to assign a rating and move to the next frame.</span></li>
+              <li data-feature><strong>Two shortcut schemes</strong><span>Choose between key layouts for photographers arriving from different editors.</span></li>
+              <li data-feature><strong>Recoverable reject removal</strong><span>Send rejected photographs in the current view to the system Trash with one shortcut.</span></li>
+              <li data-feature><strong>Before-and-after compare</strong><span>Drag a divider over the image, move the wipe slider, or hold B.</span></li>
+              <li data-feature><strong>Assisted culling</strong><span>Review plain yes, no, or unknown judgments for subject sharpness, eyes, exposure, misfires, and documents before applying any flag.</span></li>
+            </ul>
+          </section>
+
+          <section class="feature-group reveal" data-feature-group>
+            <header class="feature-group-header">
+              <p class="feature-group-number">04</p>
+              <h3>Develop and grade</h3>
+              <p>A conventional RAW workflow when Film is off, with the same grade after Film when it is on.</p>
+            </header>
+            <ul class="feature-items">
+              <li data-feature><strong>Film and Develop workspaces</strong><span>Switch Film off for a neutral RAW edit or leave it on and grade after the physical film pipeline.</span></li>
+              <li data-feature><strong>Standard and Linear profiles</strong><span>Use a neutral base curve with protected middle gray or the bare scene-referred render.</span></li>
+              <li data-feature><strong>Progressive RAW preview</strong><span>See the camera preview first, then the accurate full-quality demosaic from the export pipeline.</span></li>
+              <li data-feature><strong>Capture white balance</strong><span>Choose as-shot, daylight, tungsten, or custom white balance before film exposure.</span></li>
+              <li data-feature><strong>Demosaic profiles</strong><span>Choose camera-native, fine-detail, or smooth-color RAW conversion.</span></li>
+              <li data-feature><strong>Highlight recovery</strong><span>Blend clipped channels or reconstruct highlight color during RAW development.</span></li>
+              <li data-feature><strong>Sensor-stage noise reduction</strong><span>Apply light or full noise reduction before the rest of the edit.</span></li>
+              <li data-feature><strong>Basic grade</strong><span>Adjust exposure, contrast, highlights, shadows, whites, blacks, temperature, tint, vibrance, and saturation.</span></li>
+              <li data-feature><strong>Presence and finish</strong><span>Control texture, clarity, dehaze, and vignette.</span></li>
+              <li data-feature><strong>Detail controls</strong><span>Set sharpening amount, radius, detail, edge masking, luminance noise reduction, and color noise reduction.</span></li>
+              <li data-feature><strong>Learned denoising</strong><span>Run a bundled Core ML denoiser for sensor noise; builds without the model say it is unavailable instead of passing pixels through.</span></li>
+              <li data-feature><strong>RGB and channel curves</strong><span>Draw a point curve for RGB or an individual channel; preview and export use the same 256-entry table.</span></li>
+              <li data-feature><strong>Eight-band color mixer</strong><span>Adjust hue, saturation, and luminance across eight hue bands.</span></li>
+              <li data-feature><strong>Point Color</strong><span>Sample up to eight source hues, set their affected range, and adjust or even out hue, saturation, and luminance.</span></li>
+              <li data-feature><strong>Four-way Color Grading</strong><span>Grade shadows, midtones, highlights, and the whole image with separate wheels, blending, and balance.</span></li>
+              <li data-feature><strong>Scopes</strong><span>Use a live RGB histogram, luma waveform, RGB parade, or YCbCr vectorscope beside the image.</span></li>
+              <li data-feature><strong>Auto tone and white-balance dropper</strong><span>Start from an automatic tonal pass or sample neutral color directly from the photograph.</span></li>
+              <li data-feature><strong>Clipping readout</strong><span>Show clipped channels while judging exposure and output.</span></li>
+              <li data-feature><strong>Camera profiles</strong><span>Apply the hue map, look table, and tone curve from a chosen DCP file, with unsupported interpolation named.</span></li>
+            </ul>
+          </section>
+
+          <section class="feature-group reveal" data-feature-group>
+            <header class="feature-group-header">
+              <p class="feature-group-number">05</p>
+              <h3>Film, print, and scan</h3>
+              <p>A modeled photographic process rather than a color preset.</p>
+            </header>
+            <ul class="feature-items">
+              <li data-feature><strong>23 film stocks</strong><span>Each stock carries its own spectral response, density behavior, masking, halation, development, and grain model.</span></li>
+              <li data-feature><strong>9 print profiles</strong><span>Send a negative through a modeled print material instead of stopping at a film-colored image.</span></li>
+              <li data-feature><strong>Authentic and Creative routing</strong><span>Follow a stock's intended print profile or preserve an intentional stock-and-paper combination.</span></li>
+              <li data-feature><strong>Camera exposure and scene metering</strong><span>Set capture EV and meter placement before the film response is calculated.</span></li>
+              <li data-feature><strong>Film format</strong><span>Choose the physical image size used to turn stock grain measurements into pixels.</span></li>
+              <li data-feature><strong>Stock-specific grain</strong><span>Scale each stock's own particle-area baseline instead of laying one noise texture over every image.</span></li>
+              <li data-feature><strong>Diffusion and halation</strong><span>Model light spread at capture and around bright areas in the emulsion.</span></li>
+              <li data-feature><strong>Film development</strong><span>Choose measured black-and-white development times or use a clearly labeled creative contrast control.</span></li>
+              <li data-feature><strong>Print exposure and preflash</strong><span>Control paper exposure and pre-exposure before the scan stage.</span></li>
+              <li data-feature><strong>Yellow and magenta filtration</strong><span>Grade the darkroom print through Y/M filtration rather than a hidden color transform.</span></li>
+              <li data-feature><strong>Print glare and output recipes</strong><span>Model the viewing material and choose a defined print-to-output treatment.</span></li>
+              <li data-feature><strong>Scan finish</strong><span>Set scan softness and sharpening after the print or reversal stage.</span></li>
+              <li data-feature><strong>Reversal-film routing</strong><span>Slide films bypass the negative print stage and go directly to scan.</span></li>
+              <li data-feature><strong>Profile bypass</strong><span>Turn the stock model off without discarding the rest of the edit.</span></li>
+            </ul>
+          </section>
+
+          <section class="feature-group reveal" data-feature-group>
+            <header class="feature-group-header">
+              <p class="feature-group-number">06</p>
+              <h3>Mask and retouch</h3>
+              <p>Named local edits that remain adjustable and travel with the recipe.</p>
+            </header>
+            <ul class="feature-items">
+              <li data-feature><strong>Up to 16 named masks</strong><span>Keep several non-destructive local corrections organized on one photograph.</span></li>
+              <li data-feature><strong>Subject, Sky, and Object masks</strong><span>Make on-device semantic selections without sending the photograph to a server.</span></li>
+              <li data-feature><strong>Portrait masks</strong><span>Select Person, Face Skin, Eyes, Eyebrows, Lips, Teeth, or Hair with Apple Vision on the Mac.</span></li>
+              <li data-feature><strong>Depth masks</strong><span>Use embedded depth when available or estimate a continuous field, then adjust the near and far range.</span></li>
+              <li data-feature><strong>Brush, Linear, and Radial masks</strong><span>Draw local selections by hand when the image calls for a geometric or painted mask.</span></li>
+              <li data-feature><strong>Add, Subtract, and Intersect</strong><span>Refine a mask through explicit set operations instead of rebuilding it.</span></li>
+              <li data-feature><strong>Luminance and color ranges</strong><span>Constrain a selection by brightness or a sampled color.</span></li>
+              <li data-feature><strong>Local adjustments</strong><span>Apply grouped Light, Color, Texture, and Clarity controls inside each mask.</span></li>
+              <li data-feature><strong>Mask overlay and inversion</strong><span>Inspect coverage, hide a mask, change its opacity, or invert it.</span></li>
+              <li data-feature><strong>Automatic removal</strong><span>Paint a target and let local inpainting remove it.</span></li>
+              <li data-feature><strong>Heal and clone</strong><span>Place exact two-point corrections, then drag source and target, change feather and opacity, or refresh the source.</span></li>
+              <li data-feature><strong>Spot visualization</strong><span>Raise local contrast to find sensor dust and small marks before correcting them.</span></li>
+              <li data-feature><strong>Up to 50 corrections</strong><span>Store heal, clone, and removal spots as edit instructions; the original never changes.</span></li>
+            </ul>
+          </section>
+
+          <section class="feature-group reveal" data-feature-group>
+            <header class="feature-group-header">
+              <p class="feature-group-number">07</p>
+              <h3>Optics and geometry</h3>
+              <p>Profile-based correction when the match is exact, manual control when it is not.</p>
+            </header>
+            <ul class="feature-items">
+              <li data-feature><strong>Exact lens-profile matching</strong><span>Apply calibrated distortion, transverse chromatic aberration, and lens shading only when camera and lens identity match.</span></li>
+              <li data-feature><strong>Manual lens controls</strong><span>Correct distortion, vignette, red/cyan fringe, and blue/yellow fringe without a profile.</span></li>
+              <li data-feature><strong>Perspective controls</strong><span>Adjust vertical and horizontal keystone, fine rotation, and scale.</span></li>
+              <li data-feature><strong>Auto level and upright</strong><span>Detect lines in the frame, solve level and perspective, and add the scale needed to avoid empty corners.</span></li>
+              <li data-feature><strong>Crop and aspect ratios</strong><span>Drag the crop directly and choose a standard or custom aspect.</span></li>
+              <li data-feature><strong>Rotate and flip</strong><span>Rotate 90 degrees or flip horizontally and vertically.</span></li>
+              <li data-feature><strong>Fit, pan, and 1:1</strong><span>Pinch or scroll to zoom, pan the image, fit it to the viewer, or inspect one image pixel per display pixel.</span></li>
+            </ul>
+          </section>
+
+          <section class="feature-group reveal" data-feature-group>
+            <header class="feature-group-header">
+              <p class="feature-group-number">08</p>
+              <h3>Edits, presets, and history</h3>
+              <p>Repeat a treatment without flattening the decisions inside it.</p>
+            </header>
+            <ul class="feature-items">
+              <li data-feature><strong>Non-destructive recipes</strong><span>Film, grade, geometry, masks, healing, and lens settings are stored separately from the source.</span></li>
+              <li data-feature><strong>Undo and redo</strong><span>Reverse local edits and visible commands, including changes made through agent control.</span></li>
+              <li data-feature><strong>Copy and paste</strong><span>Copy settings to a selection, every visible photograph, or one target with clear success and disabled states.</span></li>
+              <li data-feature><strong>Full styles</strong><span>Replace the current edit with a complete preset.</span></li>
+              <li data-feature><strong>Tool presets</strong><span>Layer only the controls included in a preset and leave everything else alone.</span></li>
+              <li data-feature><strong>Film-aware presets</strong><span>Include the physical Film pipeline, add a grade after Film, or switch Film off for Develop.</span></li>
+              <li data-feature><strong>Named versions</strong><span>Save and restore editing checkpoints without duplicating the source image.</span></li>
+              <li data-feature><strong>Speed-key adjustments</strong><span>Hold a mapped key while scrolling, dragging, or using arrows to change its control; double tap to reset.</span></li>
+              <li data-feature><strong>Per-camera RAW defaults</strong><span>Save demosaic, highlight recovery, white balance, and sensor noise choices for a camera.</span></li>
+            </ul>
+          </section>
+
+          <section class="feature-group reveal" data-feature-group>
+            <header class="feature-group-header">
+              <p class="feature-group-number">09</p>
+              <h3>Migrate and interoperate</h3>
+              <p>Bring the useful parts across and name what cannot cross render engines.</p>
+            </header>
+            <ul class="feature-items">
+              <li data-feature><strong>Lightroom Classic catalog import</strong><span>Copy and read an LRCAT without changing it, even while Lightroom is open.</span></li>
+              <li data-feature><strong>Library state migration</strong><span>Bring across ratings, flags, labels, keyword hierarchies, collections, stacks, virtual copies, IPTC, GPS, and optional history.</span></li>
+              <li data-feature><strong>Develop-setting conversion</strong><span>Map controls with a defensible counterpart and label the result approximate because the render engines differ.</span></li>
+              <li data-feature><strong>Mapped-and-skipped report</strong><span>See every converted control, named skip, and conversion note before applying imported settings.</span></li>
+              <li data-feature><strong>XMP sidecar read and write</strong><span>Read ratings, keywords, metadata, crop, and develop settings; optionally write portable library state beside originals.</span></li>
+              <li data-feature><strong>Preset import</strong><span>Open LightTable LTPRESET, Lightroom or Camera Raw XMP, legacy LRTEMPLATE, ZIP bundles, Capture One COSTYLE, and COSTYLEPACK files.</span></li>
+              <li data-feature><strong>Preset export</strong><span>Write LightTable, XMP, or Capture One COSTYLE presets.</span></li>
+              <li data-feature><strong>Folder and bundle import</strong><span>Import one preset, a ZIP package, or a whole settings folder recursively.</span></li>
+              <li data-feature><strong>External pixel editor</strong><span>Open an adjusted 16-bit ProPhoto TIFF in another editor and register the saved derivative back as a stack.</span></li>
+            </ul>
+          </section>
+
+          <section class="feature-group reveal" data-feature-group>
+            <header class="feature-group-header">
+              <p class="feature-group-number">10</p>
+              <h3>Merge, match, and proof</h3>
+              <p>Combine frames and judge output without hiding the method.</p>
+            </header>
+            <ul class="feature-items">
+              <li data-feature><strong>HDR merge</strong><span>Align, deghost, and exposure-fuse bracketed frames into a 16-bit ProPhoto master.</span></li>
+              <li data-feature><strong>Panorama merge</strong><span>Feature-align overlapping photographs, stitch them projectively, and feather the joins.</span></li>
+              <li data-feature><strong>Focus merge</strong><span>Align small focus-breathing changes and combine up to 60 frames through a sharpness-weighted pyramid.</span></li>
+              <li data-feature><strong>Source manifests</strong><span>Save a sidecar beside every merge master listing the photographs used to make it.</span></li>
+              <li data-feature><strong>Reference match</strong><span>Align a scan as an overlay or split view, measure the difference, and adjust only visible capture or print controls.</span></li>
+              <li data-feature><strong>Soft proofing</strong><span>Preview sRGB, Display P3, matte paper, or gloss paper without changing the edit or export recipe.</span></li>
+              <li data-feature><strong>Gamut warning</strong><span>Mark colors that fall outside a selected print target in magenta.</span></li>
+            </ul>
+          </section>
+
+          <section class="feature-group reveal" data-feature-group>
+            <header class="feature-group-header">
+              <p class="feature-group-number">11</p>
+              <h3>Export, performance, and control</h3>
+              <p>Color-managed delivery, a measured renderer, and access beyond the window.</p>
+            </header>
+            <ul class="feature-items">
+              <li data-feature><strong>JPEG, HEIF, PNG, and TIFF</strong><span>Choose the delivery format, quality, and long-edge resize in each export recipe.</span></li>
+              <li data-feature><strong>True 16-bit TIFF</strong><span>Write RGB16 TIFF while film and grade calculations remain floating point until encoding.</span></li>
+              <li data-feature><strong>Three output color spaces</strong><span>Export sRGB, Display P3, or ProPhoto RGB with the matching ICC profile embedded.</span></li>
+              <li data-feature><strong>Reusable export recipes</strong><span>Save destination, format, size, naming, metadata, watermark, and collision behavior together.</span></li>
+              <li data-feature><strong>Selection rules</strong><span>Export approved, rated, or all photographs.</span></li>
+              <li data-feature><strong>Filename templates and collisions</strong><span>Build names from tokens and choose what happens when a destination file already exists.</span></li>
+              <li data-feature><strong>Watermarks</strong><span>Apply a text or image watermark as part of a saved recipe.</span></li>
+              <li data-feature><strong>Metadata policies</strong><span>Include nothing, copyright only, everything, or everything except location.</span></li>
+              <li data-feature><strong>Recipe and provenance sidecars</strong><span>Write an adjacent LightTable JSON record of the export recipe and renderer revision.</span></li>
+              <li data-feature><strong>Concurrent export</strong><span>Run two jobs at a time while sharing the resident GPU film engine.</span></li>
+              <li data-feature><strong>Rust and GPU rendering</strong><span>Use a resident WGPU renderer backed by Metal for warm previews and full-resolution export work.</span></li>
+              <li data-feature><strong>Measured preview latency</strong><span>A warmed 1100-pixel film render measured 50.5 ms median across 30 runs on the disclosed benchmark Mac.</span></li>
+              <li data-feature><strong>Matching preview and export math</strong><span>The native Metal preview, WebGL fallback, and exporter keep curves and grading operations in the same order.</span></li>
+              <li data-feature><strong>Local AI index</strong><span>Optionally index objects, scenes, visible text, and face counts with Apple Vision; face detection never assigns identities.</span></li>
+              <li data-feature><strong>Optional image descriptions</strong><span>On macOS 27 or later, Apple Foundation Models can add a natural-language description without replacing the Vision index.</span></li>
+              <li data-feature><strong>Command-line control</strong><span>List, rate, flag, edit, render, analyze, compare, export, and drive the visible app through the local CLI.</span></li>
+              <li data-feature><strong>Agent control through MCP</strong><span>Expose documented local tools and current window state; mutations are attributed, visible, and undoable.</span></li>
+            </ul>
+          </section>
+        </div>
+
+        <div class="feature-empty" id="feature-empty" hidden>
+          <p>No features match that search.</p>
+          <button class="text-button" id="feature-empty-clear" type="button">Clear the search</button>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>LightTable</span>
+      <a class="text-link" href="https://github.com/reville/lighttable-app">View the project on GitHub <span aria-hidden="true">↗</span></a>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
