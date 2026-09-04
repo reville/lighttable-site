@@ -87,6 +87,29 @@ footer {
   border-radius: 7px;
 }
 
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(18px, 2.6vw, 38px);
+}
+
+.site-nav a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 540;
+  text-decoration: none;
+  transition: color 160ms ease;
+}
+
+.site-nav a:hover,
+.site-nav a:focus-visible,
+.site-nav a[aria-current="page"] {
+  color: var(--text);
+}
+
 .text-link,
 .screenshot-link,
 .back-link {
@@ -593,6 +616,14 @@ figcaption strong {
     min-height: 72px;
   }
 
+  .site-nav {
+    gap: 16px;
+  }
+
+  .site-nav a {
+    font-size: 12px;
+  }
+
   .hero {
     min-height: auto;
     padding: 64px 0 90px;
@@ -660,6 +691,12 @@ figcaption strong {
   figcaption {
     flex-direction: column;
     gap: 6px;
+  }
+}
+
+@media (max-width: 420px) {
+  .wordmark span {
+    display: none;
   }
 }
 
