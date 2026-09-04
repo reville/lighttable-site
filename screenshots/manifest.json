@@ -1,0 +1,111 @@
+{
+  "appRevision": "4482a28bd59d35c59e06e9012b67401f0636fc86",
+  "captureMethod": "Playwright rendering the real LightTable interface",
+  "capturedAt": "2026-09-04T20:50:46.478294+00:00",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "schema": 1,
+  "shotCount": 10,
+  "shots": [
+    {
+      "asset": "film-controls.webp",
+      "bytes": 125540,
+      "height": 1169,
+      "id": "film-controls",
+      "sha256": "5d8a67077b7ba9e4f6289c220a49174fe50c9e76038d57d92706034a9091befa",
+      "source": "20-fujifilm-x-t30-iii-desert-rocks.RAF",
+      "subject": "desert rock formations",
+      "width": 1800
+    },
+    {
+      "asset": "editor.webp",
+      "bytes": 152288,
+      "height": 1169,
+      "id": "editor",
+      "sha256": "ced6b6205238fb71a615dcc29d51effb66d9a8eebde9358eaf21d0b763790974",
+      "source": "03-fujifilm-xq2-harbor-ferry.RAF",
+      "subject": "harbor ferry",
+      "width": 1800
+    },
+    {
+      "asset": "crop-and-rotate.webp",
+      "bytes": 118294,
+      "height": 1169,
+      "id": "crop-and-rotate",
+      "sha256": "ff72f11b1ac8b8e0c25f002ec20e9e0716e19e8d010bd65ce4ea5364b69746f3",
+      "source": "13-fujifilm-x100vi-stone-church.RAF",
+      "subject": "stone church",
+      "width": 1800
+    },
+    {
+      "asset": "local-masks.webp",
+      "bytes": 120696,
+      "height": 1169,
+      "id": "local-masks",
+      "sha256": "cc5d6d911e86732d0069fa17031197e693df118c389a1cf073d435d1ec89836c",
+      "source": "09-google-pixel-7-pro-succulents.DNG",
+      "subject": "succulent plants",
+      "width": 1800
+    },
+    {
+      "asset": "remove.webp",
+      "bytes": 104134,
+      "height": 1169,
+      "id": "remove",
+      "sha256": "e688751c7bfcecd9d05f89e28ed062a24d3aa65c31b52bf15a26593f7487d02c",
+      "source": "06-nikon-z6-still-life-toys.NEF",
+      "subject": "toy still life",
+      "width": 1800
+    },
+    {
+      "asset": "lens-and-geometry.webp",
+      "bytes": 130952,
+      "height": 1169,
+      "id": "lens-and-geometry",
+      "sha256": "3d71181014ada0507b6433ab863ef4433e477c182c3b40f8a2477decdbfed852",
+      "source": "04-ricoh-gr-iii-coastal-dunes.DNG",
+      "subject": "coastal dunes",
+      "width": 1800
+    },
+    {
+      "asset": "before-after.webp",
+      "bytes": 106374,
+      "height": 1169,
+      "id": "before-after",
+      "sha256": "85a7dade4a4cb01263828950c1f23bd5f9fac701773e19144ad2df3150378c5e",
+      "source": "07-sony-a7c-autumn-leaf.ARW",
+      "subject": "autumn leaf close-up",
+      "width": 1800
+    },
+    {
+      "asset": "photo-info.webp",
+      "bytes": 142952,
+      "height": 1169,
+      "id": "photo-info",
+      "sha256": "1cc74ab6b1c1a71aeeb75db9f42736f3f020cbbf34622a4d5bb53679c3b6aab7",
+      "source": "16-dji-mavic-3-pro-aerial-castle.DNG",
+      "subject": "aerial castle",
+      "width": 1800
+    },
+    {
+      "asset": "history.webp",
+      "bytes": 194062,
+      "height": 1169,
+      "id": "history",
+      "sha256": "7ef9cfd96415e58ed093a122f2bd0da8ebe73b478e8456cfd46ab40e6ff6fcef",
+      "source": "01-canon-eos-80d-city-tree.CR2",
+      "subject": "city street and large tree",
+      "width": 1800
+    },
+    {
+      "asset": "export-workflow.webp",
+      "bytes": 120292,
+      "height": 1169,
+      "id": "export-workflow",
+      "sha256": "c4b5d69b4648814948e1a62f87c3f6c9c018ada57183ef32f2024de0acdb5a5b",
+      "source": "05-sony-rx100-vii-tropical-homestead.ARW",
+      "subject": "tropical homestead",
+      "width": 1800
+    }
+  ],
+  "sourceCollection": "LightTable CC0 RAW demo collection"
+}
