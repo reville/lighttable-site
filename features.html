@@ -70,6 +70,45 @@
         </ol>
       </section>
 
+      <section class="feature-facts" aria-labelledby="install-title">
+        <header class="feature-section-intro feature-facts-intro reveal">
+          <p class="eyebrow">Compatibility and storage</p>
+          <h2 id="install-title">Before you install.</h2>
+          <p>The current Mac build, its import limits, and what it leaves on your computer.</p>
+        </header>
+
+        <dl class="feature-facts-list">
+          <div class="reveal">
+            <dt>Intel or Apple silicon?</dt>
+            <dd>The current Mac release is Apple silicon only. The app and its helper programs are built for <code>arm64</code>, so they do not launch on an Intel Mac.</dd>
+          </div>
+          <div class="reveal">
+            <dt>What macOS version and hardware?</dt>
+            <dd>LightTable requires macOS 13 Ventura or later on an Apple silicon Mac. The main editor does not require Apple Intelligence. Optional image descriptions require macOS 27 or later, Apple Intelligence, and the optional bridge. LightTable has not published a minimum RAM figure yet.</dd>
+          </div>
+          <div class="reveal">
+            <dt>Which RAW files, cameras, and lenses?</dt>
+            <dd>RAW support covers <code>3FR</code>, <code>ARQ</code>, <code>ARW</code>, <code>CAP</code>, <code>CR2</code>, <code>CR3</code>, <code>CRW</code>, <code>DCR</code>, <code>DNG</code>, <code>ERF</code>, <code>FFF</code>, <code>IIQ</code>, <code>KDC</code>, <code>MEF</code>, <code>MOS</code>, <code>MRW</code>, <code>NEF</code>, <code>NRW</code>, <code>ORF</code>, <code>PEF</code>, <code>RAF</code>, <code>RAW</code>, <code>RW2</code>, <code>RWL</code>, <code>SR2</code>, <code>SRF</code>, and <code>SRW</code>. The bundled LibRaw 0.22 recognizes 1,275 camera models from 83 manufacturers. <code>X3F</code> is currently excluded. Automatic lens correction uses the bundled Lensfun database and only turns on for a confident camera, lens, and focal-length match. This site does not yet publish a lens-by-lens list; manual correction remains available.</dd>
+          </div>
+          <div class="reveal">
+            <dt>What works from Lightroom?</dt>
+            <dd>Lightroom and Camera Raw <code>XMP</code> presets, legacy <code>LRTEMPLATE</code> presets, and ZIP bundles import with approximate control conversion. A Lightroom Classic <code>LRCAT</code> imports from a read-only copy. Lightroom cloud libraries and <code>Managed Catalog.mcat</code> do not import; export their originals to ordinary files first. Imported Adobe edits default to Film off.</dd>
+          </div>
+          <div class="reveal">
+            <dt>What will not migrate?</dt>
+            <dd>External presets skip camera profiles, proprietary looks and LUTs, local and AI masks, healing, crop and geometry, lens-profile identities, subject and sky selections, and render-engine-specific operations. Lightroom Classic catalog import also skips <code>.lrcat-data</code> masks and AI data, unsupported smart-collection rules, incomplete crop records, straighten angles beyond ±15°, video develop settings, unmatched files, and custom color-label names. The import report names every skip.</dd>
+          </div>
+          <div class="reveal">
+            <dt>Where does LightTable store its data?</dt>
+            <dd>The catalog and edits live in <code>~/Library/Application Support/LightTable/Catalog/library.sqlite3</code>. Presets, preferences, and the optional AI index also live under <code>~/Library/Application Support/LightTable</code>. Generated thumbnails, previews, renders, and compiled caches live under <code>~/Library/Caches/LightTable</code>. Originals stay where you put them. Apple Photos imports are copies in <code>~/Pictures/LightTable Imports/Apple Photos</code>. LightTable also writes <code>.lighttable-state.json</code> to writable source folders as a portable edit mirror; XMP sidecar write-back is opt-in.</dd>
+          </div>
+          <div class="reveal">
+            <dt>What remains after uninstalling?</dt>
+            <dd>Dragging <code>LightTable.app</code> to the Trash removes the app, not its data. Originals, ingested copies, Apple Photos imports, exports, Application Support data, caches, <code>.lighttable-state.json</code> files, and any XMP sidecars remain. For a complete removal, quit LightTable and delete <code>~/Library/Application Support/LightTable</code> and <code>~/Library/Caches/LightTable</code>. Remove imported or exported photographs and sidecars separately only if you no longer want them.</dd>
+          </div>
+        </dl>
+      </section>
+
       <section class="feature-directory" aria-labelledby="directory-title">
         <header class="feature-section-intro feature-directory-intro reveal">
           <p class="eyebrow">The complete list</p>
