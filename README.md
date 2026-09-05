@@ -4,7 +4,7 @@ The static website for [lighttable.app](https://lighttable.app), hosted with
 GitHub Pages.
 
 The LightTable application source lives in the
-[main project repository](https://github.com/reville/lighttable-app).
+[main project repository](https://github.com/reville/lighttable-digital-darkroom).
 
 The ten real product screenshots are maintained by the reproducible pipeline
 in [`scripts/screenshots`](scripts/screenshots/README.md). It uses a different

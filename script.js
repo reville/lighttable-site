@@ -1,4 +1,35 @@
 const releaseButton = document.querySelector("#release-download");
+const installCommand = document.querySelector("#install-command");
+const copyCommandButton = document.querySelector(".copy-command");
+const installStatus = document.querySelector("#install-status");
+
+if (installCommand && copyCommandButton && installStatus) {
+  const defaultStatus = installStatus.textContent;
+  let resetCopyState;
+  copyCommandButton.hidden = false;
+
+  copyCommandButton.addEventListener("click", async () => {
+    clearTimeout(resetCopyState);
+    copyCommandButton.classList.remove("is-copied");
+
+    try {
+      await navigator.clipboard.writeText(installCommand.textContent.trim());
+      copyCommandButton.classList.add("is-copied");
+      installStatus.textContent = "Copied · Installer coming soon";
+      resetCopyState = setTimeout(() => {
+        copyCommandButton.classList.remove("is-copied");
+        installStatus.textContent = defaultStatus;
+      }, 2500);
+    } catch {
+      const selection = window.getSelection();
+      const range = document.createRange();
+      range.selectNodeContents(installCommand);
+      selection?.removeAllRanges();
+      selection?.addRange(range);
+      installStatus.textContent = "Select and copy the command · Coming soon";
+    }
+  });
+}
 
 function detectedPlatform() {
   const platform = navigator.userAgentData?.platform || navigator.platform || "";
@@ -25,7 +56,7 @@ function matchingAsset(assets, platform) {
 if (releaseButton) {
   const platform = detectedPlatform();
 
-  fetch("https://api.github.com/repos/reville/lighttable-app/releases/latest", {
+  fetch("https://api.github.com/repos/reville/lighttable-digital-darkroom/releases/latest", {
     headers: { Accept: "application/vnd.github+json" },
   })
     .then((response) => {

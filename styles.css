@@ -230,8 +230,84 @@ code {
 .actions {
   display: flex;
   flex-wrap: wrap;
+  align-items: flex-start;
   gap: 10px;
   margin-top: 28px;
+}
+
+.install-option {
+  flex: 1 1 240px;
+  min-width: 0;
+}
+
+.install-command {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 5px 10px 5px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+.install-command code {
+  flex: 1;
+  min-width: 0;
+  color: var(--text);
+  font-size: 12px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+  user-select: all;
+}
+
+.copy-command {
+  display: inline-flex;
+  flex: 0 0 32px;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 6px;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transition: color 160ms ease, background 160ms ease;
+}
+
+.copy-command[hidden],
+.copy-command .copied-icon,
+.copy-command.is-copied .copy-icon {
+  display: none;
+}
+
+.copy-command.is-copied .copied-icon {
+  display: block;
+}
+
+.copy-command:hover,
+.copy-command.is-copied {
+  background: rgba(228, 236, 125, 0.08);
+  color: var(--accent);
+}
+
+.copy-command:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.copy-command svg {
+  width: 20px;
+  height: 20px;
+}
+
+.install-status {
+  margin: 7px 0 0;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.5;
 }
 
 .button {
@@ -1292,6 +1368,10 @@ figcaption span {
     flex: 1 1 100%;
   }
 
+  .install-option {
+    flex-basis: 100%;
+  }
+
   footer {
     padding: 28px 0;
     align-items: flex-start;
@@ -1380,6 +1460,7 @@ figcaption span {
   .reveal,
   .reveal.is-visible,
   .button,
+  .copy-command,
   .product-shot,
   .nerdery-level-title,
   .feature-search input,

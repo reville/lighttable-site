@@ -39,7 +39,7 @@
       <nav class="site-nav" aria-label="Main navigation">
         <a href="screenshots.html">Screenshots</a>
         <a href="features.html">Features</a>
-        <a href="https://github.com/reville/lighttable-app">GitHub <span aria-hidden="true">↗</span></a>
+        <a href="https://github.com/reville/lighttable-digital-darkroom">GitHub <span aria-hidden="true">↗</span></a>
       </nav>
     </header>
 
@@ -73,9 +73,24 @@
             <a
               class="button button-primary"
               id="release-download"
-              href="https://github.com/reville/lighttable-app/releases"
+              href="https://github.com/reville/lighttable-digital-darkroom/releases"
             >Download for macOS</a>
-            <a class="button button-secondary" href="https://github.com/reville/lighttable-app">View on GitHub</a>
+            <div class="install-option">
+              <div class="install-command">
+                <code id="install-command">brew install --cask reville/lighttable/lighttable</code>
+                <button class="copy-command" type="button" aria-label="Copy Homebrew install command" aria-describedby="install-status" title="Copy command" hidden>
+                  <svg class="copy-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                    <rect x="7" y="7" width="9" height="10" rx="2" />
+                    <path d="M12 7V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2" />
+                  </svg>
+                  <svg class="copied-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                    <path d="m4 10 4 4 8-8" />
+                  </svg>
+                </button>
+              </div>
+              <p class="install-status" id="install-status" role="status">Homebrew · Coming soon</p>
+            </div>
+            <a class="button button-secondary" href="https://github.com/reville/lighttable-digital-darkroom">View on GitHub</a>
           </div>
 
           <a class="screenshot-link reveal" href="screenshots.html">
