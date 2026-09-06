@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Capture and validate the ten LightTable website screenshots."""
+"""Capture and validate the LightTable gallery, homepage crop, and UI closeups."""
 
 from __future__ import annotations
 
@@ -27,6 +27,7 @@ SITE_ROOT = SCRIPT_ROOT.parents[1]
 PLAN_PATH = SCRIPT_ROOT / "manifest.json"
 BROWSER_RUNNER = SCRIPT_ROOT / "browser-capture.mjs"
 GENERATED_MANIFEST = "manifest.json"
+HOMEPAGE_MANIFEST = "homepage-manifest.json"
 CC0_URL = "https://creativecommons.org/publicdomain/zero/1.0/"
 
 
@@ -148,6 +149,170 @@ def validate_outputs(plan: dict, shots: list[dict], output_dir: Path) -> list[di
     if len(heights) != 1:
         raise PipelineError(f"gallery screenshots do not share one aspect ratio: {sorted(heights)}")
     return results
+
+
+def homepage_entries(plan: dict) -> list[dict]:
+    homepage = plan.get("homepage", {})
+    entries = [homepage.get("hero", {}), *homepage.get("details", [])]
+    shot_ids = {shot["id"] for shot in plan["shots"]}
+    assets = {shot["asset"] for shot in plan["shots"]}
+    ids = set()
+    for entry in entries:
+        for field in ("id", "sourceShot", "asset", "alt"):
+            if not isinstance(entry.get(field), str) or not entry[field].strip():
+                raise PipelineError(f"homepage image needs a non-empty {field}")
+        if entry["sourceShot"] not in shot_ids:
+            raise PipelineError(f"unknown homepage source shot: {entry['sourceShot']}")
+        if (entry["id"] in ids or entry["asset"] in assets
+                or Path(entry["asset"]).name != entry["asset"]
+                or not entry["asset"].endswith(".webp")):
+            raise PipelineError(f"invalid or duplicate homepage asset: {entry['asset']}")
+        ids.add(entry["id"])
+        assets.add(entry["asset"])
+        crop = entry.get("crop")
+        if (not isinstance(crop, list) or len(crop) != 4
+                or any(type(value) is not int for value in crop)
+                or min(crop[:2]) < 0 or min(crop[2:]) <= 0):
+            raise PipelineError(f"invalid crop rectangle for {entry['id']}")
+        # cwebp rounds crop origins down to even pixels; reject ambiguous inputs.
+        if crop[0] % 2 or crop[1] % 2:
+            raise PipelineError(f"crop x/y must be even pixels for {entry['id']}")
+    for entry in homepage.get("details", []):
+        for field in ("title", "label", "caption"):
+            if not isinstance(entry.get(field), str) or not entry[field].strip():
+                raise PipelineError(f"homepage detail needs a non-empty {field}")
+    return entries
+
+
+def homepage_inputs(plan: dict, output_dir: Path) -> tuple[dict, list[dict]]:
+    generated = load_json(output_dir / GENERATED_MANIFEST)
+    sources = {shot["id"]: shot for shot in plan["shots"]}
+    recorded = {shot["id"]: shot for shot in generated.get("shots", [])}
+    if generated.get("license") != CC0_URL or not generated.get("appRevision"):
+        raise PipelineError("homepage sources need recorded CC0 provenance and app revision")
+    inputs = []
+    for entry in homepage_entries(plan):
+        shot = sources[entry["sourceShot"]]
+        source = output_dir / shot["asset"]
+        record = recorded.get(shot["id"], {})
+        if (record.get("asset") != shot["asset"] or record.get("source") != shot["source"]
+                or not source.is_file() or record.get("sha256") != sha256(source)):
+            raise PipelineError(f"homepage source differs from recorded capture: {shot['asset']}")
+        width, height = dimensions(source)
+        if (width, height) != (record.get("width"), record.get("height")):
+            raise PipelineError(f"homepage source dimensions drifted: {shot['asset']}")
+        x, y, crop_width, crop_height = entry["crop"]
+        if x + crop_width > width or y + crop_height > height:
+            raise PipelineError(f"crop extends outside source image: {entry['id']}")
+        inputs.append({
+            "id": entry["id"], "asset": entry["asset"], "crop": entry["crop"],
+            "sourceShot": shot["id"], "sourceAsset": shot["asset"],
+            "sourceSha256": record["sha256"], "width": crop_width, "height": crop_height,
+        })
+    return generated, inputs
+
+
+def homepage_blocks(plan: dict) -> dict[str, str]:
+    escape = html.escape
+    homepage = plan["homepage"]
+    hero = homepage["hero"]
+    shots = {shot["id"]: shot for shot in plan["shots"]}
+    blocks = {"HERO": f'''        <div class="hero-preview">
+          <a class="product-shot reveal" href="screenshots.html" aria-label="View LightTable screenshots">
+            <img src="screenshots/{escape(hero['asset'])}" alt="{escape(hero['alt'])}" width="{hero['crop'][2]}" height="{hero['crop'][3]}" fetchpriority="high" />
+          </a>
+          <a class="screenshot-link reveal" href="screenshots.html">see screenshots</a>
+        </div>'''}
+    details = []
+    for entry in homepage["details"]:
+        source = shots[entry["sourceShot"]]
+        details.append(f'''        <figure class="ui-detail reveal" data-detail="{escape(entry['id'])}">
+          <div class="ui-detail-visual">
+            <a class="ui-detail-overview" href="screenshots.html" aria-label="See the full {escape(source['title'])}">
+              <img src="screenshots/{escape(source['asset'])}" alt="{escape(source['alt'])}" width="{plan['capture']['width']}" height="{round(plan['capture']['width'] * plan['capture']['viewportHeight'] / plan['capture']['viewportWidth'])}" loading="lazy" />
+            </a>
+            <a class="ui-detail-inset" href="screenshots/{escape(entry['asset'])}" aria-label="Enlarge {escape(entry['label'].split(' / ')[-1])} controls">
+              <img src="screenshots/{escape(entry['asset'])}" alt="{escape(entry['alt'])}" width="{entry['crop'][2]}" height="{entry['crop'][3]}" loading="lazy" />
+            </a>
+          </div>
+          <figcaption>
+            <p class="eyebrow">{escape(entry['label'])}</p>
+            <h3>{escape(entry['title'])}</h3>
+            <p class="ui-detail-caption">{escape(entry['caption'])}</p>
+          </figcaption>
+        </figure>''')
+    blocks["DETAILS"] = '''      <section class="ui-details" aria-labelledby="ui-details-title">
+        <header class="ui-details-intro reveal">
+          <p class="eyebrow">Inside LightTable</p>
+          <h2 id="ui-details-title">A closer look.</h2>
+        </header>
+''' + "\n\n".join(details) + '''
+        <a class="text-link" href="screenshots.html">See all editing modes <span aria-hidden="true">→</span></a>
+      </section>'''
+    return blocks
+
+
+def homepage_html(plan: dict, page: str) -> str:
+    for name, block in homepage_blocks(plan).items():
+        pattern = rf"(<!-- BEGIN HOMEPAGE {name} -->\n).*?([ \t]*<!-- END HOMEPAGE {name} -->)"
+        page, count = re.subn(pattern, lambda match: match[1] + block + "\n" + match[2], page, flags=re.S)
+        if count != 1:
+            raise PipelineError(f"index.html needs exactly one HOMEPAGE {name} marker pair")
+    return page
+
+
+def check_homepage(plan: dict, output_dir: Path) -> None:
+    generated, inputs = homepage_inputs(plan, output_dir)
+    manifest = load_json(output_dir / HOMEPAGE_MANIFEST)
+    if (manifest.get("appRevision") != generated["appRevision"]
+            or manifest.get("sourceCapturedAt") != generated.get("capturedAt")):
+        raise PipelineError("homepage crops refer to a different app capture; run --derive-homepage")
+    records = manifest.get("images", [])
+    if len(records) != len(inputs):
+        raise PipelineError("homepage crop count drifted; run --derive-homepage")
+    for expected, recorded in zip(inputs, records):
+        path = output_dir / expected["asset"]
+        if any(recorded.get(key) != value for key, value in expected.items()):
+            raise PipelineError(f"stale homepage crop: {expected['id']}; run --derive-homepage")
+        if (not path.is_file() or sha256(path) != recorded.get("sha256")
+                or dimensions(path) != (expected["width"], expected["height"])):
+            raise PipelineError(f"homepage crop file drifted: {path.name}")
+    page = (SITE_ROOT / "index.html").read_text(encoding="utf-8")
+    if homepage_html(plan, page) != page:
+        raise PipelineError("homepage image markup drifted; run --derive-homepage")
+
+
+def build_homepage(plan: dict, output_dir: Path) -> None:
+    generated, inputs = homepage_inputs(plan, output_dir)
+    page_path = SITE_ROOT / "index.html"
+    page = homepage_html(plan, page_path.read_text(encoding="utf-8"))
+    cwebp = require_tool("cwebp")
+    # Stage every crop before touching the existing assets or page.
+    with tempfile.TemporaryDirectory(prefix=".homepage-", dir=output_dir) as directory:
+        temporary = Path(directory)
+        records = []
+        for entry in inputs:
+            destination = temporary / entry["asset"]
+            run([cwebp, "-quiet", "-lossless", "-exact", "-crop",
+                 *map(str, entry["crop"]), str(output_dir / entry["sourceAsset"]),
+                 "-o", str(destination)])
+            if dimensions(destination) != (entry["width"], entry["height"]):
+                raise PipelineError(f"unexpected generated crop dimensions: {entry['id']}")
+            records.append({**entry, "sha256": sha256(destination), "bytes": destination.stat().st_size})
+        for entry in inputs:
+            os.replace(temporary / entry["asset"], output_dir / entry["asset"])
+    manifest = {
+        "schema": 1, "appRevision": generated["appRevision"],
+        "sourceCapturedAt": generated.get("capturedAt"),
+        "method": "Lossless pixel crops of the recorded real LightTable screenshots; no UI reconstruction",
+        "license": generated["license"], "images": records,
+    }
+    (output_dir / HOMEPAGE_MANIFEST).write_text(
+        json.dumps(manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8",
+    )
+    page_path.write_text(page, encoding="utf-8")
+    check_homepage(plan, output_dir)
+    print(f"Generated homepage hero and {len(inputs) - 1} UI closeups from recorded screenshots.")
 
 
 def free_port() -> int:
@@ -343,27 +508,39 @@ def capture(plan: dict, shots: list[dict], app_root: Path, output_dir: Path) -> 
     (output_dir / GENERATED_MANIFEST).write_text(
         json.dumps(generated, indent=2, sort_keys=True) + "\n", encoding="utf-8",
     )
+    build_homepage(plan, output_dir)
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--app-root", type=Path, required=True,
+    parser.add_argument("--app-root", type=Path,
                         help="clean LightTable app checkout containing the CC0 RAW collection")
     parser.add_argument("--output-dir", type=Path, default=SITE_ROOT / "screenshots")
-    parser.add_argument("--check", action="store_true",
+    mode = parser.add_mutually_exclusive_group()
+    mode.add_argument("--check", action="store_true",
                         help="validate the plan, published assets, provenance, and HTML references")
-    parser.add_argument("--dry-run", action="store_true",
+    mode.add_argument("--dry-run", action="store_true",
                         help="validate and print the ten-shot plan without starting LightTable")
+    mode.add_argument("--derive-homepage", action="store_true",
+                      help="rebuild homepage crops and HTML from recorded screenshots; no app needed")
     arguments = parser.parse_args()
+    if not arguments.derive_homepage and not arguments.app_root:
+        parser.error("--app-root is required except with --derive-homepage")
 
     try:
-        app_root = arguments.app_root.expanduser().resolve()
         output_dir = arguments.output_dir.expanduser().resolve()
         plan = load_json(PLAN_PATH)
+        homepage_entries(plan)
+        if arguments.derive_homepage:
+            build_homepage(plan, output_dir)
+            return 0
+        app_root = arguments.app_root.expanduser().resolve()
         shots = validate_plan(plan, app_root)
         if arguments.dry_run:
             for index, shot in enumerate(shots, start=1):
                 print(f"{index:02d}  {shot['id']:<20} {shot['source']}")
+            for entry in homepage_entries(plan):
+                print(f"    {entry['id']:<20} crop {entry['crop']} from {entry['sourceShot']}")
             return 0
         if arguments.check:
             records = validate_outputs(plan, shots, output_dir)
@@ -374,10 +551,11 @@ def main() -> int:
             recorded = {item["asset"]: item["sha256"] for item in generated.get("shots", [])}
             if current != recorded:
                 raise PipelineError("published screenshot hashes drifted from screenshots/manifest.json")
-            print("Screenshot gallery is current: 10 unique CC0 sources, 10 assets, 10 HTML figures.")
+            check_homepage(plan, output_dir)
+            print("Screenshot assets verified: 10 gallery shots plus homepage hero, UI closeups, and HTML.")
             return 0
         capture(plan, shots, app_root, output_dir)
-        print(f"Published ten screenshots and {output_dir / GENERATED_MANIFEST}")
+        print(f"Generated website screenshots and {output_dir / GENERATED_MANIFEST}")
         return 0
     except (PipelineError, subprocess.SubprocessError, OSError, json.JSONDecodeError) as error:
         print(f"capture.py: {error}", file=sys.stderr)

@@ -1,0 +1,77 @@
+{
+  "appRevision": "4482a28bd59d35c59e06e9012b67401f0636fc86",
+  "images": [
+    {
+      "asset": "hero-film.webp",
+      "bytes": 412074,
+      "crop": [
+        900,
+        0,
+        900,
+        1169
+      ],
+      "height": 1169,
+      "id": "hero-film",
+      "sha256": "27a7ac698171325595ba1b9d56dbed0da73b372313b52fb91169525a4a3e7190",
+      "sourceAsset": "film-controls.webp",
+      "sourceSha256": "5d8a67077b7ba9e4f6289c220a49174fe50c9e76038d57d92706034a9091befa",
+      "sourceShot": "film-controls",
+      "width": 900
+    },
+    {
+      "asset": "detail-film.webp",
+      "bytes": 46498,
+      "crop": [
+        1354,
+        328,
+        380,
+        620
+      ],
+      "height": 620,
+      "id": "detail-film",
+      "sha256": "22578aad32322e70951c814dd77074bf3c1438d09774fba3c1d20b22dc400f76",
+      "sourceAsset": "film-controls.webp",
+      "sourceSha256": "5d8a67077b7ba9e4f6289c220a49174fe50c9e76038d57d92706034a9091befa",
+      "sourceShot": "film-controls",
+      "width": 380
+    },
+    {
+      "asset": "detail-masks.webp",
+      "bytes": 48646,
+      "crop": [
+        1354,
+        136,
+        380,
+        656
+      ],
+      "height": 656,
+      "id": "detail-masks",
+      "sha256": "7aa1422f44e5465e68d74bc74f403dd658a783b29d3839dadf678fa2cc433b3c",
+      "sourceAsset": "local-masks.webp",
+      "sourceSha256": "cc5d6d911e86732d0069fa17031197e693df118c389a1cf073d435d1ec89836c",
+      "sourceShot": "local-masks",
+      "width": 380
+    },
+    {
+      "asset": "detail-export.webp",
+      "bytes": 29778,
+      "crop": [
+        1354,
+        240,
+        380,
+        614
+      ],
+      "height": 614,
+      "id": "detail-export",
+      "sha256": "4c5312da7002ec5299e5455e80894f75ac57fe0e47089d9b08570ac7845a199c",
+      "sourceAsset": "export-workflow.webp",
+      "sourceSha256": "c4b5d69b4648814948e1a62f87c3f6c9c018ada57183ef32f2024de0acdb5a5b",
+      "sourceShot": "export-workflow",
+      "width": 380
+    }
+  ],
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "method": "Lossless pixel crops of the recorded real LightTable screenshots; no UI reconstruction",
+  "schema": 1,
+  "sourceCapturedAt": "2026-09-04T20:50:46.478294+00:00"
+}

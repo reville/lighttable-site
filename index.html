@@ -16,7 +16,7 @@
     <meta property="og:url" content="https://lighttable.app/" />
     <meta property="og:image" content="https://lighttable.app/og.png" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="theme-color" content="#0b0c0b" />
+    <meta name="theme-color" content="#242424" />
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png" />
     <link rel="apple-touch-icon" href="app-icon.png" />
@@ -98,15 +98,72 @@
           </a>
         </div>
 
-        <a class="product-shot reveal" href="screenshots.html" aria-label="View LightTable screenshots">
-          <img
-            src="screenshots/film-controls.webp"
-            alt="LightTable's native macOS Film workspace showing film stock and physical print controls"
-            width="1800"
-            height="1169"
-          />
-        </a>
+        <!-- BEGIN HOMEPAGE HERO -->
+        <div class="hero-preview">
+          <a class="product-shot reveal" href="screenshots.html" aria-label="View LightTable screenshots">
+            <img src="screenshots/hero-film.webp" alt="The right half of LightTable’s Film workspace, with a desert photograph beside film stock and print controls" width="900" height="1169" fetchpriority="high" />
+          </a>
+          <a class="screenshot-link reveal" href="screenshots.html">see screenshots</a>
+        </div>
+        <!-- END HOMEPAGE HERO -->
       </section>
+
+      <!-- BEGIN HOMEPAGE DETAILS -->
+      <section class="ui-details" aria-labelledby="ui-details-title">
+        <header class="ui-details-intro reveal">
+          <p class="eyebrow">Inside LightTable</p>
+          <h2 id="ui-details-title">A closer look.</h2>
+        </header>
+        <figure class="ui-detail reveal" data-detail="detail-film">
+          <div class="ui-detail-visual">
+            <a class="ui-detail-overview" href="screenshots.html" aria-label="See the full Film workspace">
+              <img src="screenshots/film-controls.webp" alt="LightTable Film workspace showing a desert landscape with film stock, format, paper, and physical print controls" width="1800" height="1169" loading="lazy" />
+            </a>
+            <a class="ui-detail-inset" href="screenshots/detail-film.webp" aria-label="Enlarge Film controls">
+              <img src="screenshots/detail-film.webp" alt="Closeup of Film controls for capture white balance, Kodak Portra 400 stock, 35 mm format, paper, and print exposure" width="380" height="620" loading="lazy" />
+            </a>
+          </div>
+          <figcaption>
+            <p class="eyebrow">01 / Film</p>
+            <h3>From stock to print.</h3>
+            <p class="ui-detail-caption">Choose a film stock, set the format, and shape the print with paper, exposure, and development controls.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="ui-detail reveal" data-detail="detail-masks">
+          <div class="ui-detail-visual">
+            <a class="ui-detail-overview" href="screenshots.html" aria-label="See the full Local masks">
+              <img src="screenshots/local-masks.webp" alt="LightTable Masking workspace showing succulent plants with a radial mask overlay and local adjustment controls" width="1800" height="1169" loading="lazy" />
+            </a>
+            <a class="ui-detail-inset" href="screenshots/detail-masks.webp" aria-label="Enlarge Masking controls">
+              <img src="screenshots/detail-masks.webp" alt="Closeup of a radial mask’s selection, overlay, exposure, and texture controls" width="380" height="656" loading="lazy" />
+            </a>
+          </div>
+          <figcaption>
+            <p class="eyebrow">02 / Masking</p>
+            <h3>Work on just one part.</h3>
+            <p class="ui-detail-caption">Place a mask on the photograph, refine its shape, and adjust light and texture inside the selection.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="ui-detail reveal" data-detail="detail-export">
+          <div class="ui-detail-visual">
+            <a class="ui-detail-overview" href="screenshots.html" aria-label="See the full Full-resolution export">
+              <img src="screenshots/export-workflow.webp" alt="LightTable Export workspace showing a tropical homestead with recipe, format, size, color space, and naming controls" width="1800" height="1169" loading="lazy" />
+            </a>
+            <a class="ui-detail-inset" href="screenshots/detail-export.webp" aria-label="Enlarge Export controls">
+              <img src="screenshots/detail-export.webp" alt="Closeup of Export recipe, JPEG quality, dimensions, color space, destination, and filename controls" width="380" height="614" loading="lazy" />
+            </a>
+          </div>
+          <figcaption>
+            <p class="eyebrow">03 / Export</p>
+            <h3>Finish your way.</h3>
+            <p class="ui-detail-caption">Save an export recipe with your file type, dimensions, color space, and naming pattern ready to use again.</p>
+          </figcaption>
+        </figure>
+        <a class="text-link" href="screenshots.html">See all editing modes <span aria-hidden="true">→</span></a>
+      </section>
+      <!-- END HOMEPAGE DETAILS -->
 
       <section class="nerdery" id="features" aria-labelledby="nerdery-title">
         <header class="nerdery-intro reveal">

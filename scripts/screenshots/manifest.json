@@ -204,5 +204,46 @@
         "grade": { "exposure": 0.55, "shadows": 0.3 }
       }
     }
-  ]
+  ],
+  "homepage": {
+    "hero": {
+      "id": "hero-film",
+      "sourceShot": "film-controls",
+      "asset": "hero-film.webp",
+      "crop": [900, 0, 900, 1169],
+      "alt": "The right half of LightTable’s Film workspace, with a desert photograph beside film stock and print controls"
+    },
+    "details": [
+      {
+        "id": "detail-film",
+        "sourceShot": "film-controls",
+        "asset": "detail-film.webp",
+        "crop": [1354, 328, 380, 620],
+        "title": "From stock to print.",
+        "label": "01 / Film",
+        "caption": "Choose a film stock, set the format, and shape the print with paper, exposure, and development controls.",
+        "alt": "Closeup of Film controls for capture white balance, Kodak Portra 400 stock, 35 mm format, paper, and print exposure"
+      },
+      {
+        "id": "detail-masks",
+        "sourceShot": "local-masks",
+        "asset": "detail-masks.webp",
+        "crop": [1354, 136, 380, 656],
+        "title": "Work on just one part.",
+        "label": "02 / Masking",
+        "caption": "Place a mask on the photograph, refine its shape, and adjust light and texture inside the selection.",
+        "alt": "Closeup of a radial mask’s selection, overlay, exposure, and texture controls"
+      },
+      {
+        "id": "detail-export",
+        "sourceShot": "export-workflow",
+        "asset": "detail-export.webp",
+        "crop": [1354, 240, 380, 614],
+        "title": "Finish your way.",
+        "label": "03 / Export",
+        "caption": "Save an export recipe with your file type, dimensions, color space, and naming pattern ready to use again.",
+        "alt": "Closeup of Export recipe, JPEG quality, dimensions, color space, destination, and filename controls"
+      }
+    ]
+  }
 }
