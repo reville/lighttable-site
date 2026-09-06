@@ -80,19 +80,24 @@ try {
         hero: { width: hero.naturalWidth, height: hero.naturalHeight },
         portrait: heroRect.height > heroRect.width,
         linkBelowImage: link.getBoundingClientRect().top >= heroRect.bottom,
-        captionsStacked: [...document.querySelectorAll('.ui-detail figcaption')].every((caption) => {
-          const label = caption.querySelector('.eyebrow').getBoundingClientRect();
-          const heading = caption.querySelector('h3').getBoundingClientRect();
-          const description = caption.querySelector('.ui-detail-caption').getBoundingClientRect();
-          return heading.top >= label.bottom && description.top >= heading.bottom;
+        captionsBelow: [...document.querySelectorAll('.ui-detail')].every((figure) => {
+          const caption = figure.querySelector('figcaption');
+          const visual = figure.querySelector('.ui-detail-visual').getBoundingClientRect();
+          const style = getComputedStyle(caption);
+          return caption.getBoundingClientRect().top >= visual.bottom
+            && parseFloat(style.fontSize) <= 14 && parseInt(style.fontWeight, 10) <= 400;
         }),
+        captions: [...document.querySelectorAll('.ui-detail figcaption')].map((caption) => caption.textContent.trim()),
+        detailHeadings: document.querySelectorAll('.ui-details h1, .ui-details h2, .ui-details h3').length,
         insets: [...document.querySelectorAll('.ui-detail-inset img')].map((image) => ({
           src: image.getAttribute('src'), width: image.naturalWidth, height: image.naturalHeight,
           displayedWidth: image.getBoundingClientRect().width,
         })),
       };
     });
-    if (homepage.overflow > 1 || !homepage.portrait || !homepage.linkBelowImage || !homepage.captionsStacked
+    if (homepage.overflow > 1 || !homepage.portrait || !homepage.linkBelowImage || !homepage.captionsBelow
+        || homepage.detailHeadings !== 0
+        || JSON.stringify(homepage.captions) !== JSON.stringify(plan.homepage.details.map((entry) => entry.label))
         || homepage.background !== 'rgb(36, 36, 36)' || errors.length) {
       throw new Error(`${test.name}: ${JSON.stringify({ homepage, errors })}`);
     }

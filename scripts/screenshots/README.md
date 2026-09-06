@@ -36,8 +36,8 @@ The `homepage` section of `manifest.json` defines the hero and detail insets.
 Each entry names a `sourceShot`, stable output filename, alt text, and a pixel
 rectangle `[x, y, width, height]` within its 1800 × 1169 source screenshot.
 The hero uses exactly the right half of the Film workspace. Detail entries also
-provide the caption and heading displayed beside a full-workspace overview and
-an enlarged inset. Both images link to a larger view.
+provide a short, plain label displayed below the full-workspace overview and
+enlarged inset. Both images link to a larger view.
 
 To adjust the framing or copy using the already recorded captures:
 

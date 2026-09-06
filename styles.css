@@ -398,22 +398,10 @@ code {
   border-top: 1px solid var(--line);
 }
 
-.ui-details-intro {
-  margin-bottom: clamp(56px, 6vw, 96px);
-}
-
-.ui-details-intro h2 {
-  margin: 0;
-  font-size: clamp(44px, 5.4vw, 84px);
-  font-weight: 560;
-  letter-spacing: -0.055em;
-  line-height: 0.96;
-}
-
 .ui-detail {
   display: grid;
   grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
-  gap: clamp(40px, 6vw, 96px);
+  gap: 16px clamp(40px, 6vw, 96px);
   align-items: center;
   margin: 0 0 clamp(72px, 9vw, 138px);
 }
@@ -424,8 +412,13 @@ code {
 
 .ui-detail figcaption {
   display: block;
+  grid-column: 1;
+  grid-row: 2;
   margin: 0;
-  color: var(--text);
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
 }
 
 .ui-detail:nth-of-type(even) .ui-detail-visual {
@@ -434,8 +427,8 @@ code {
 }
 
 .ui-detail:nth-of-type(even) figcaption {
-  grid-column: 1;
-  grid-row: 1;
+  grid-column: 2;
+  grid-row: 2;
 }
 
 .ui-detail-visual {
@@ -476,26 +469,6 @@ code {
 .ui-detail-overview img {
   border: 1px solid #454545;
   border-radius: 8px;
-}
-
-.ui-detail .eyebrow {
-  margin-bottom: 20px;
-}
-
-.ui-detail h3 {
-  margin: 0;
-  font-size: clamp(34px, 3.2vw, 50px);
-  font-weight: 540;
-  letter-spacing: -0.045em;
-  line-height: 1.04;
-}
-
-.ui-detail-caption {
-  margin: 24px 0 0;
-  max-width: 32ch;
-  color: var(--muted);
-  font-size: clamp(16px, 1.4vw, 20px);
-  line-height: 1.65;
 }
 
 .nerdery {
@@ -1347,7 +1320,7 @@ figcaption span {
   .ui-detail,
   .ui-detail:nth-of-type(even) {
     grid-template-columns: 1fr;
-    gap: 32px;
+    gap: 16px;
   }
 
   .ui-detail:nth-of-type(even) .ui-detail-visual,
@@ -1366,14 +1339,6 @@ figcaption span {
     width: 100%;
     max-width: 390px;
     margin-top: 32%;
-  }
-
-  .ui-detail figcaption {
-    order: -1;
-  }
-
-  .ui-detail-caption {
-    max-width: 45ch;
   }
 
   .feature-section-intro,

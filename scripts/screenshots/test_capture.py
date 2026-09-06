@@ -84,7 +84,8 @@ class HomepageCaptureTests(unittest.TestCase):
             capture.check_homepage(self.plan, self.output)
         path.write_bytes(original)
         page = self.root / "index.html"
-        page.write_text(page.read_text().replace("From stock to print.", "Manual heading"))
+        label = self.plan["homepage"]["details"][0]["label"]
+        page.write_text(page.read_text().replace(f"<figcaption>{label}</figcaption>", "<figcaption>Manual label</figcaption>"))
         with self.assertRaisesRegex(capture.PipelineError, "markup drifted"):
             capture.check_homepage(self.plan, self.output)
 

@@ -178,9 +178,8 @@ def homepage_entries(plan: dict) -> list[dict]:
         if crop[0] % 2 or crop[1] % 2:
             raise PipelineError(f"crop x/y must be even pixels for {entry['id']}")
     for entry in homepage.get("details", []):
-        for field in ("title", "label", "caption"):
-            if not isinstance(entry.get(field), str) or not entry[field].strip():
-                raise PipelineError(f"homepage detail needs a non-empty {field}")
+        if not isinstance(entry.get("label"), str) or not entry["label"].strip():
+            raise PipelineError("homepage detail needs a non-empty label")
     return entries
 
 
@@ -231,23 +230,14 @@ def homepage_blocks(plan: dict) -> dict[str, str]:
             <a class="ui-detail-overview" href="screenshots.html" aria-label="See the full {escape(source['title'])}">
               <img src="screenshots/{escape(source['asset'])}" alt="{escape(source['alt'])}" width="{plan['capture']['width']}" height="{round(plan['capture']['width'] * plan['capture']['viewportHeight'] / plan['capture']['viewportWidth'])}" loading="lazy" />
             </a>
-            <a class="ui-detail-inset" href="screenshots/{escape(entry['asset'])}" aria-label="Enlarge {escape(entry['label'].split(' / ')[-1])} controls">
+            <a class="ui-detail-inset" href="screenshots/{escape(entry['asset'])}" aria-label="Enlarge {escape(entry['label'])} controls">
               <img src="screenshots/{escape(entry['asset'])}" alt="{escape(entry['alt'])}" width="{entry['crop'][2]}" height="{entry['crop'][3]}" loading="lazy" />
             </a>
           </div>
-          <figcaption>
-            <p class="eyebrow">{escape(entry['label'])}</p>
-            <h3>{escape(entry['title'])}</h3>
-            <p class="ui-detail-caption">{escape(entry['caption'])}</p>
-          </figcaption>
+          <figcaption>{escape(entry['label'])}</figcaption>
         </figure>''')
-    blocks["DETAILS"] = '''      <section class="ui-details" aria-labelledby="ui-details-title">
-        <header class="ui-details-intro reveal">
-          <p class="eyebrow">Inside LightTable</p>
-          <h2 id="ui-details-title">A closer look.</h2>
-        </header>
+    blocks["DETAILS"] = '''      <section class="ui-details" aria-label="Editing workflows">
 ''' + "\n\n".join(details) + '''
-        <a class="text-link" href="screenshots.html">See all editing modes <span aria-hidden="true">→</span></a>
       </section>'''
     return blocks
 
